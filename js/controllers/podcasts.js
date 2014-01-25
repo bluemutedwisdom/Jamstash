@@ -75,7 +75,6 @@ function PodcastCtrl($scope, $rootScope, $location, utils, globals, model, notif
                                 }
                             });
                             $scope.$apply();
-                            $rootScope.showQueue();
                             notifications.updateMessage(items.length + ' Song(s) Added to Queue', true);
                         } else if (action == 'play') {
                             $rootScope.queue = [];
@@ -88,7 +87,6 @@ function PodcastCtrl($scope, $rootScope, $location, utils, globals, model, notif
                             $scope.$apply(function () {
                                 $rootScope.playSong(false, next);
                             });
-                            $rootScope.showQueue();
                             notifications.updateMessage(items.length + ' Song(s) Added to Queue', true);
                         } else {
                             $scope.album = [];

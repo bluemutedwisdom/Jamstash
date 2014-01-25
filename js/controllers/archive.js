@@ -217,7 +217,6 @@ function ArchiveCtrl($scope, $rootScope, $location, $routeParams, $http, utils, 
                             $rootScope.queue.push(song);
                         }
                     });
-                    $rootScope.showQueue(); 
                     notifications.updateMessage(Object.keys(items).length + ' Song(s) Added to Queue', true);
                     $scope.$apply();
                 } else if (action == 'play') {
@@ -232,7 +231,6 @@ function ArchiveCtrl($scope, $rootScope, $location, $routeParams, $http, utils, 
                     $scope.$apply(function () {
                         $rootScope.playSong(false, next);
                     });
-                    $rootScope.showQueue();
                     notifications.updateMessage(Object.keys(items).length + ' Song(s) Added to Queue', true);
                 } else {
                     $scope.album = [];
@@ -254,7 +252,6 @@ function ArchiveCtrl($scope, $rootScope, $location, $routeParams, $http, utils, 
                 $scope.queue.push(item);
                 item.selected = false;
             });
-            $rootScope.showQueue();
             notifications.updateMessage($scope.selectedSongs.length + ' Song(s) Added to Queue', true);
         }
     }

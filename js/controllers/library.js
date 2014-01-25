@@ -144,7 +144,7 @@ function SubsonicCtrl($scope, $rootScope, $location, $window, $routeParams, util
         if (typeof album.title !== 'undefined') { title = album.title; } else { title = album.name; }
         var type;
         if (album.isDir) {
-            type = 'byfolder';            
+            type = 'byfolder';
         } else {
             type = 'bytag';
         }
@@ -329,7 +329,6 @@ function SubsonicCtrl($scope, $rootScope, $location, $window, $routeParams, util
                             $rootScope.queue.push(utils.mapSong(item));
                         });
                         $scope.$apply();
-                        $rootScope.showQueue();
                         notifications.updateMessage(items.length + ' Song(s) Added to Queue', true);
                     } else if (action == 'play') {
                         $rootScope.queue = [];
@@ -340,7 +339,6 @@ function SubsonicCtrl($scope, $rootScope, $location, $window, $routeParams, util
                         $scope.$apply(function () {
                             $rootScope.playSong(false, next);
                         });
-                        $rootScope.showQueue();
                         notifications.updateMessage(items.length + ' Song(s) Added to Queue', true);
                     } else if (action == 'preview') {
                         $scope.songpreview = [];

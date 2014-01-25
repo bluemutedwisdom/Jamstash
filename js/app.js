@@ -1,6 +1,5 @@
 /* Declare app level module */
-var JamStash = angular.module('JamStash', ['ngCookies', 'ngSanitize']);
-//var JamStash = angular.module('JamStash', ['ngCookies', 'ngRoute']);
+var JamStash = angular.module('JamStash', ['ngCookies', 'ngRoute']);
 /*
 JamStash.config(function ($sceDelegateProvider) {
     $sceDelegateProvider.resourceUrlWhitelist(['/^\s*(https?|file|ms-appx):/', 'self']);

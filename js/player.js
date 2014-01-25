@@ -137,7 +137,7 @@
     $rootScope.playSong = function (loadonly, data) {
         if (globals.settings.Debug) { console.log('Play: ' + JSON.stringify(data, null, 2)); }
         angular.forEach($rootScope.queue, function(item, key) {
-            item.playing = false;        
+            item.playing = false;
         });
         data.playing = true;
         data.selected = false;
@@ -173,7 +173,6 @@
             // End UnityShim
         }
         $('#QueuePreview').stop().scrollTo('#' + id, 400);
-        $rootScope.showQueue();
         var spechtml = '';
         var data = $(player1).data().jPlayer;
         for (i = 0; i < data.solutions.length; i++) {
@@ -219,7 +218,7 @@
         //var salt = Math.floor(Math.random() * 100000);
         //url += '&salt=' + salt;
         $(el).jPlayer("destroy");
-        $.jPlayer.timeFormat.showHour = true; 
+        $.jPlayer.timeFormat.showHour = true;
         $(el).jPlayer({
             swfPath: "js/plugins/jplayer",
             wmode: "window",
@@ -286,7 +285,7 @@
                     if (!getNextSong()) { // Action if we are at the last song in queue
                         if (globals.settings.LoopQueue) { // Loop to first track in queue if enabled
                             var next = $rootScope.queue[0];
-                            $rootScope.playSong(false, next);                
+                            $rootScope.playSong(false, next);
                         } else if (globals.settings.AutoPlay) { // Load more tracks if enabled
                             $rootScope.getRandomSongs('play', '', '');
                             notifications.updateMessage('Auto Play Activated...', true);
@@ -299,10 +298,10 @@
             error: function(event) {
                 var time = $(player1).data("jPlayer").status.currentTime;
                 $(player1).jPlayer("play", time);
-                if (globals.settings.Debug) { 
-                    console.log("Error Type: " + event.jPlayer.error.type); 
-                    console.log("Error Context: " + event.jPlayer.error.context); 
-                    console.log("Error Message: " + event.jPlayer.error.message); 
+                if (globals.settings.Debug) {
+                    console.log("Error Type: " + event.jPlayer.error.type);
+                    console.log("Error Context: " + event.jPlayer.error.context);
+                    console.log("Error Message: " + event.jPlayer.error.message);
                     console.log("Stream interrupted, retrying from position: " + time);
                 }
             }
@@ -316,18 +315,18 @@
             } else {
                 $(player1).jPlayer("pause");
             }
-        } 
+        }
     }
     playVideo = function (id, bitrate) {
         var w, h;
         bitrate = parseInt(bitrate);
-        if (bitrate <= 600) { 
-            w = 320; h = 240; 
-        } else if (bitrate <= 1000) { 
-            w = 480; h = 360; 
-        } else { 
-            w = 640; h = 480; 
-        } 
+        if (bitrate <= 600) {
+            w = 320; h = 240;
+        } else if (bitrate <= 1000) {
+            w = 480; h = 360;
+        } else {
+            w = 640; h = 480;
+        }
         //$("#jPlayerSelector").jPlayer("option", "fullScreen", true);
         $("#videodeck").jPlayer({
 		    ready: function () {
@@ -349,7 +348,7 @@
 		    supplied: "m4v"
 	    });
     }
-    
+
     scrobbleSong = function (submission) {
         if ($rootScope.loggedIn && submission) {
             var id = $rootScope.playingSong.id;

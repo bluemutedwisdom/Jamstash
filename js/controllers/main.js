@@ -18,7 +18,7 @@ function AppCtrl($scope, $rootScope, $document, $location, utils, globals, model
         }
     }
     /*
-    $scope.playSong = function (loadonly, data) { 
+    $scope.playSong = function (loadonly, data) {
     $scope.$apply(function () {
     $rootScope.playSong(loadonly, data);
     });
@@ -105,30 +105,6 @@ function AppCtrl($scope, $rootScope, $document, $location, utils, globals, model
             setTimeout(function () { if (submenu_active == false) $('div.submenu').stop().fadeOut(); }, 10000);
         }
     }
-    $rootScope.showQueue = function (show) {
-        var submenu = $(QueuePreview);
-        submenu.fadeIn(400);
-        setTimeout(function () { submenu.fadeOut(); }, 20000);
-    }
-    $rootScope.hideQueue = function (show) {
-        submenu.fadeOut();
-    }
-    $scope.toggleQueue = function (show) {
-        var submenu = $(QueuePreview);
-        if (submenu.css('display') !== 'none') {
-            $rootScope.showQueue();
-        } else {
-            $rootScope.hideQueue();
-        }
-    }
-    $scope.pinQueue = function () {
-        var submenu = $(QueuePreview);
-        if (submenu.css('display') !== 'none') {
-            submenu.fadeOut();
-        } else {
-            submenu.fadeIn(400);
-        }
-    }
     $("a.coverartfancy").fancybox({
         beforeShow: function () {
             //this.title = $('#songdetails_artist').html();
@@ -198,15 +174,6 @@ function AppCtrl($scope, $rootScope, $document, $location, utils, globals, model
         if (pageLayout) pageLayout.resizeAll();
     };
     */
-
-    // Global Functions
-    window.onbeforeunload = function () {
-        if (!globals.settings.Debug) {
-            if ($rootScope.queue.length > 0) {
-                return "You're about to end your session, are you sure?";
-            }
-        }
-    }
 
     $scope.dragStart = function (e, ui) {
         ui.item.data('start', ui.item.index());
@@ -318,7 +285,6 @@ function AppCtrl($scope, $rootScope, $document, $location, utils, globals, model
                 $scope.queue.push(item);
                 item.selected = false;
             });
-            $rootScope.showQueue();
             notifications.updateMessage($scope.selectedSongs.length + ' Song(s) Added to Queue', true);
             $scope.selectedSongs.length = 0;
         }
@@ -391,7 +357,7 @@ function AppCtrl($scope, $rootScope, $document, $location, utils, globals, model
             timeout: globals.settings.Timeout,
             success: function (data) {
                 if (typeof data["subsonic-response"].error != 'undefined') {
-                    notifications.updateMessage('Error: ' + data["subsonic-response"].error.message, true);                    
+                    notifications.updateMessage('Error: ' + data["subsonic-response"].error.message, true);
                 } else {
                     if (data["subsonic-response"].user.downloadRole == true) {
                         $window.location.href = globals.BaseURL() + '/download.view?' + globals.BaseParams() + '&id=' + id;
@@ -504,7 +470,6 @@ function AppCtrl($scope, $rootScope, $document, $location, utils, globals, model
                             $rootScope.queue.push(utils.mapSong(item));
                         });
                         $scope.$apply();
-                        $rootScope.showQueue();
                         notifications.updateMessage(items.length + ' Song(s) Added to Queue', true);
                     } else if (action == 'play') {
                         $rootScope.queue = [];
@@ -515,7 +480,6 @@ function AppCtrl($scope, $rootScope, $document, $location, utils, globals, model
                         $scope.$apply(function () {
                             $rootScope.playSong(false, next);
                         });
-                        $rootScope.showQueue();
                         notifications.updateMessage(items.length + ' Song(s) Added to Queue', true);
                     } else {
                         $rootScope.song = [];

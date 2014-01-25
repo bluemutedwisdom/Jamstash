@@ -64,7 +64,6 @@ function PlaylistCtrl($scope, $rootScope, $location, utils, globals, model, noti
                             $rootScope.queue.push(utils.mapSong(item));
                         });
                         $scope.$apply();
-                        $rootScope.showQueue();
                         notifications.updateMessage(items.length + ' Song(s) Added to Queue', true);
                     } else if (action == 'play') {
                         $rootScope.queue = [];
@@ -75,7 +74,6 @@ function PlaylistCtrl($scope, $rootScope, $location, utils, globals, model, noti
                         $scope.$apply(function () {
                             $rootScope.playSong(false, next);
                         });
-                        $rootScope.showQueue();
                         notifications.updateMessage(items.length + ' Song(s) Added to Queue', true);
                     } else {
                         $scope.album = [];
@@ -134,7 +132,6 @@ function PlaylistCtrl($scope, $rootScope, $location, utils, globals, model, noti
                                         $rootScope.queue.push(utils.mapSong(item));
                                     });
                                     $scope.$apply();
-                                    $rootScope.showQueue();
                                     notifications.updateMessage(items.length + ' Song(s) Added to Queue', true);
                                 } else if (action == 'play') {
                                     $rootScope.queue = [];
@@ -145,7 +142,6 @@ function PlaylistCtrl($scope, $rootScope, $location, utils, globals, model, noti
                                     $scope.$apply(function () {
                                         $rootScope.playSong(false, next);
                                     });
-                                    $rootScope.showQueue();
                                     notifications.updateMessage(items.length + ' Song(s) Added to Queue', true);
                                 } else {
                                     $rootScope.song = [];

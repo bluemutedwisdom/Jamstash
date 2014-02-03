@@ -1,5 +1,5 @@
 ﻿JamStash.controller('ArchiveCtrl',
-function ArchiveCtrl($scope, $rootScope, $location, $routeParams, $http, utils, globals, model, notifications, player, json) {
+function ArchiveCtrl($scope, $rootScope, $location, $routeParams, $http, utils, globals, model, notifications, json) {
     //$("#left-component").layout($scope.layoutThreeCol);
 
     $scope.settings = globals.settings;

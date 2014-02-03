@@ -1,45 +1,78 @@
-/* Declare app level module */
-var JamStash = angular.module('JamStash', ['ngCookies', 'ngRoute']);
-/*
-JamStash.config(function ($sceDelegateProvider) {
-    $sceDelegateProvider.resourceUrlWhitelist(['/^\s*(https?|file|ms-appx):/', 'self']);
-});
 
-// Given:
-// URL: http://server.com/index.html#/Chapter/1/Section/2?search=moby
-// Route: /Chapter/:chapterId/Section/:sectionId
-//
-// Then
-$routeParams ==> {chapterId:1, sectionId:2, search:'moby'}
-*/
-JamStash.config(function ($routeProvider) {
-    $routeProvider
-        .when('/index', { redirectTo: '/library' })
-        .when('/settings', { templateUrl: 'js/partials/settings.html', controller: 'SettingsCtrl' })
-        .when('/library', { templateUrl: 'js/partials/library.html', controller: 'SubsonicCtrl' })
-        .when('/library/:artistId', { templateUrl: 'js/partials/library.html', controller: 'SubsonicCtrl', reloadOnSearch: false })
-        .when('/library/:artistId/:albumId', { templateUrl: 'js/partials/library.html', controller: 'SubsonicCtrl', reloadOnSearch: false })
-        .when('/playlists', { templateUrl: 'js/partials/playlists.html', controller: 'PlaylistCtrl' })
-        .when('/podcasts', { templateUrl: 'js/partials/podcasts.html', controller: 'PodcastCtrl' })
-        .when('/archive', { templateUrl: 'js/partials/archive.html', controller: 'ArchiveCtrl' })
-        .when('/archive/:artist', { templateUrl: 'js/partials/archive.html', controller: 'ArchiveCtrl' })
-        .when('/archive/:artist/:album', { templateUrl: 'js/partials/archive.html', controller: 'ArchiveCtrl' })
-        .otherwise({ redirectTo: '/index' });
+var JamStash = angular.module('JamStash', ['ngResource', 'ui.router']);
+
+
+JamStash.config(function ($locationProvider, $stateProvider, $urlRouterProvider) {
+	/*
+	 *.when('/playlists', { templateUrl: 'js/partials/playlists.html', controller: 'PlaylistCtrl' })
+	 *.when('/podcasts', { templateUrl: 'js/partials/podcasts.html', controller: 'PodcastCtrl' })
+	 *.when('/archive', { templateUrl: 'js/partials/archive.html', controller: 'ArchiveCtrl' })
+	 *.when('/archive/:artist', { templateUrl: 'js/partials/archive.html', controller: 'ArchiveCtrl' })
+	 *.when('/archive/:artist/:album', { templateUrl: 'js/partials/archive.html', controller: 'ArchiveCtrl' })
+	 */
+
+	$urlRouterProvider.otherwise('/library');
+
+	$stateProvider
+	    .state('library',{
+		    url: '/library',
+		    templateUrl: 'js/partials/library.html',
+		    controller: 'SubsonicCtrl'
+	    })
+	    .state('library.artist',{
+		    url: '/:artistId',
+		    views: {
+			    'albums': {
+				    controller: function($scope, $stateParams, $log){
+					    $log.debug(angular.toJson($stateParams))
+					    if($stateParams.artistId.length > 0)
+						    $scope.getAlbums({id: $stateParams.artistId});
+				    }
+			    }
+		    }
+	    })
+	    .state('library.artist.album', {
+		    url: '/:albumId',
+		    views: {
+			    'songs': {
+				    controller: function($scope, $stateParams, $log, Album){
+					    $log.debug(angular.toJson($stateParams))
+					    if($stateParams.albumId.length > 0)
+						    $scope.getSongs($stateParams.albumId, '')
+				    }
+			    }
+		    }
+
+	    })
+
+	    $stateProvider
+	    .state('settings', {
+		    url: '/settings',
+		    templateUrl: 'js/partials/settings.html',
+		    controller: 'SettingsCtrl'
+	    })
+
+	    $locationProvider.html5Mode(true);
+
+
+
 })
-.run(['$rootScope', '$location', 'globals', function ($rootScope, $location, globals) {
-    $rootScope.$on("$locationChangeStart", function (event, next, current) {
-        $rootScope.loggedIn = false;
-        var path = $location.path().replace(/^\/([^\/]*).*$/, '$1');
-        if (globals.settings.Username != "" && globals.settings.Password != "" && globals.settings.Server != "" && path != 'archive') {
-            $rootScope.loggedIn = true;
-        }
-        if (!$rootScope.loggedIn && (path != 'settings' && path != 'archive')) {
-            $location.path('/settings');
-        }
-    });
-}]);
-/*
-JamStash.config(function ($httpProvider, globals) {
-    $httpProvider.defaults.timeout = globals.settings.Timeout;
-})
-*/
+.run(['$rootScope', 'globals', 'utils', '$state',
+     function ($rootScope, globals, utils, $state) {
+
+	     utils.loadSettings()
+	     utils.loadTrackPosition()
+
+	     $rootScope.loggedIn = false;
+
+	     if (globals.settings.Username != "" && globals.settings.Password != "" && globals.settings.Server != "" && ! $state.includes('archive') ) {
+		     $rootScope.loggedIn = true;
+	     }
+	     if (!$rootScope.loggedIn && (!$state.includes('settings') && !$state.includes('archive'))) {
+		     $state.go('settings');
+	     }
+
+	     utils.switchTheme(globals.settings.Theme);
+
+     }]);
+

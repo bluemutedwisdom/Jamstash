@@ -3,7 +3,6 @@
 	/*
 	 * songlist songs
 	 */
-	$scope.song = [];
 	$scope.selectedSongs = [];
 	$scope.shortcut = [];
 	$scope.playlistMenu = [];
@@ -18,8 +17,6 @@
 	$scope.Server = globals.settings.Server;
 
 	$scope.AutoAlbums = [
-		{ id: "random", name: "Random" },
-		{ id: "newest", name: "Recently Added" },
 		{ id: "starred", name: "Starred" },
 		{ id: "highest", name: "Top Rated" },
 		{ id: "frequent", name: "Most Played" },
@@ -27,6 +24,7 @@
 	];
 
 	$scope.selectedAutoAlbum;
+
 	$scope.selectedArtist;
 	$scope.selectedAlbum;
 
@@ -147,26 +145,46 @@
 		$scope.getArtists();
 	};
 
-	$scope.mapAlbum = function (data) {
-		var album = data;
-		var title, coverartthumb, coverartfull, starred;
+	$scope.mapAlbum = function (album) {
+
+		var coverartthumb, coverartfull, starred;
+
 		if (typeof album.coverArt != 'undefined') {
 			coverartthumb = globals.BaseURL() + '/getCoverArt.view?' + globals.BaseParams() + '&size=160&id=' + album.coverArt;
 			coverartfull = globals.BaseURL() + '/getCoverArt.view?' + globals.BaseParams() + '&id=' + album.coverArt;
 		}
+
 		if (typeof album.starred !== 'undefined') { starred = true; } else { starred = false; }
 		if (typeof album.title !== 'undefined') { title = album.title; } else { title = album.name; }
-		var type;
-		if (album.isDir) {
-			type = 'byfolder';
-		} else {
-			type = 'bytag';
-		}
-		return new model.Album(album.id, album.parent, title, album.artist, album.artistId, coverartthumb, coverartfull, $.format.date(new Date(album.created), "yyyy-MM-dd h:mm a"), starred, '', '', type);
+
+		if(album.year == 0 || album.year == '0' || album.year == undefined)
+			album.year = ''
+
+		return {
+			id: album.id,
+			parentid: album.parent,
+			name: title,
+			artist: album.artist,
+			artistId: album.artistId,
+			coverartthumb: coverartthumb,
+			coverartfull: coverartfull,
+			date: $.format.date(new Date(album.created), "yyyy-MM-dd h:mm a"),
+			starred: starred,
+			year: album.year,
+			description: '',
+			url: ''
+		};
 	}
 
 	$scope.loadArtist = function (artist) {
 		$state.go('library.artist', {"artistId": artist.id})
+	}
+
+	$scope.loadAlbum = function(id) {
+		if($state.includes('library.recent'))
+			$state.go('library.recent.album', {"offset": $scope.offset, "albumId": id})
+		else
+			$state.go('library.artist.album', {"albumId": id})
 	}
 
 	/*
@@ -188,7 +206,6 @@
 
 			$scope.selectedArtist = data['subsonic-response'].artist;
 
-
 			var tempAlbums = [];
 
 			if(data['subsonic-response'].artist.album.length > 0)
@@ -209,71 +226,12 @@
 		})
 	};
 
-	$scope.getArtistByTag = function (id) { // Gets Artist by ID3 tag
-
-		$scope.selectedAutoAlbum = null;
-		$scope.selectedArtist = id;
-
-		var url = globals.BaseURL() + '/getArtist.view?' + globals.BaseParams() + '&id=' + id;
-
-		$http
-		.jsonp(url)
-		.succes( function (data) {
-			var items = [];
-			if (typeof data["subsonic-response"].artist != 'undefined') {
-				if (data["subsonic-response"].artist.album.length > 0) {
-					items = data["subsonic-response"].artist.album;
-				} else {
-					items[0] = data["subsonic-response"].artist.album;
-				}
-				$scope.album = [];
-				$scope.song = [];
-
-				angular.forEach(items, function (item, key) {
-					$scope.album.push($scope.mapAlbum(item));
-				});
-			} else {
-				notifications.updateMessage('No Albums Returned :(', true);
-			}
-		});
-	};
-
-	$scope.getAlbumByTag = function (id) { // Gets Album by ID3 tag
-		$http
-		.jsonp( globals.BaseURL() + '/getAlbum.view?' + globals.BaseParams() + '&id=' + id )
-		.success( function (data) {
-			if (typeof data["subsonic-response"].album != 'undefined') {
-				$scope.album = [];
-				$scope.song = [];
-
-				$scope.album.push($scope.mapAlbum(data["subsonic-response"].album));
-
-				var items = [];
-				if (data["subsonic-response"].album.song.length > 0) {
-					items = data["subsonic-response"].album.song;
-				} else {
-					items[0] = data["subsonic-response"].album.song;
-				}
-				angular.forEach(items, function (item, key) {
-					$scope.song.push(utils.mapSong(item));
-				});
-			}
-		});
-	};
-
 	/*
 	 * Get Albums by AutoAlbums of type and page offset
 	 */
 	$scope.getAlbumListBy = function (type, offset) {
-		var size, url;
 
-		if (offset == 'next') {
-			$scope.offset = $scope.offset + globals.settings.AutoAlbumSize;
-		} else if (offset == 'prev') {
-			$scope.offset = $scope.offset - globals.settings.AutoAlbumSize;
-		}
-
-		Album.list({"type": type, "offset": $scope.offset, "size": 30}, function(data){
+		Album.list({"type": type, "offset": offset, "size": globals.settings.AutoAlbumSize}, function(data){
 
 			if (typeof data["subsonic-response"].albumList2.album != 'undefined') {
 
@@ -361,9 +319,11 @@
 							} else {
 								items[0] = data["subsonic-response"].searchResult2.song;
 							}
-							$scope.song = [];
+
+							$scope.selectedAlbum.song = []
+
 							angular.forEach(items, function (item, key) {
-								$scope.song.push(utils.mapSong(item));
+								$scope.selectedAlbum.song.push(utils.mapSong(item));
 							});
 						}
 					}
@@ -374,12 +334,14 @@
 							} else {
 								items[0] = data["subsonic-response"].searchResult2.album;
 							}
-							$scope.album = [];
+
+							$scope.selectedArtist.album = [];
+
 							angular.forEach(items, function (item, key) {
 								if (item.isDir) {
-									$scope.album.push($scope.mapAlbum(item));
+									$scope.selectedArtist.album.push($scope.mapAlbum(item));
 								} else {
-									$scope.song.push($scope.mapAlbum(item));
+									$scope.selectedAlbum.song.push(utils.mapSong(item));
 								}
 							});
 						}
@@ -450,7 +412,7 @@
 
 			if (utils.checkVersion(runningVersion, minimumVersion)) { // is 1.8.0 or newer
 
-				Playlists.update( function({"songIdToAdd": songs}) {
+				Playlists.update({"songIdToAdd": songs}, function() {
 					$scope.selectedSongs.length = 0;
 					notifications.updateMessage('Playlist Updated!', true);
 				});
@@ -507,7 +469,7 @@ $rootScope.Genres = items;
 	 * Select all songs helper function
 	 */
 	$scope.selectAll = function () {
-		angular.forEach($scope.song, function (item, key) {
+		angular.forEach($scope.selectedAlbum.song, function (item, key) {
 			item.selected = true;
 			$scope.selectedSongs.push(item);
 		});
@@ -530,6 +492,29 @@ $rootScope.Genres = items;
 			return ret;
 		}
 	}
+
+	$scope.calcOffset = function( offset ){
+
+		if (offset == 'next')
+		{
+			$scope.offset += globals.settings.AutoAlbumSize
+		}
+		else if (offset == 'prev')
+		{
+			$scope.offset -= globals.settings.AutoAlbumSize
+			if($scope.offset < 0)
+				$scope.offset = 0;
+		}
+		else if (!isNaN(offset) && offset > 0)
+		{
+			$scope.offset = offset
+		}
+		else
+			$scope.offset = 0
+
+		$state.go($state.current, {offset: $scope.offset})
+	}
+
 
 
 	/*

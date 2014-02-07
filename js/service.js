@@ -90,18 +90,17 @@ JamStash.service('globals', function () {
 		{ id: "list", name: "List" }
 	];
 	this.AlbumSorts = [
-		{ id: "default", name: "Default Sort" },
+		{ id: "title", name: "Default Sort" },
 		{ id: "artist", name: "Artist" },
-		{ id: "name", name: "Album" },
-		{ id: "track", name: "Track" },
-		{ id: "date", name: "Date" },
-		{ id: "createdate", name: "Date Added" }
+		{ id: "title", name: "Album" },
+		{ id: "year", name: "Year" },
+		{ id: "created", name: "Date Added" }
 	];
 	this.settings = {
 		Url: "http://Jamstash.com/beta/#/archive/",
-		Username: "tsquillario",
-		Password: "Elephant1!",
-		Server: "https://tsquillario.dyndns.org:8443/subsonic",
+		Username: "admin",
+		Password: "beaver",
+		Server: "http://69.251.77.96/supysonic",
 		Timeout: 10000,
 		NotificationTimeout: 20000,
 		Protocol: "jsonp",
@@ -109,7 +108,7 @@ JamStash.service('globals', function () {
 		ApiVersion: "1.6.0",
 		AutoPlaylists: "",
 		AutoPlaylistSize: 25,
-		AutoAlbumSize: 15,
+		AutoAlbumSize: 30,
 		// General
 		HideAZ: false,
 		ScrollTitle: true,
@@ -136,6 +135,22 @@ JamStash.service('globals', function () {
 
 	this.defaultParams = function () { return {"u" : this.settings.Username, "p" : this.settings.Password, "f" : this.settings.Protocol, "v" : this.settings.ApiVersion, "c" : this.settings.ApplicationName, "callback" : "JSON_CALLBACK"}}
 });
+
+JamStash.directive('scrollIf', function(){
+	return function(scope, element, attrs){
+		scope.$watch(function(scope){
+			return scope.$eval(attrs.scrollIf)
+		}, function(val){
+			if(val)
+			{
+				var list = $('#AlbumsList')
+				var child = $(element);
+
+				list.animate({scrollTop: list.scrollTop() + (child.position().top - list.position().top) - (list.height()/2) + (child.height()/2)}, 1000)
+			}
+		})
+	}
+})
 
 JamStash.directive('fancybox', function ($compile) {
 	return {

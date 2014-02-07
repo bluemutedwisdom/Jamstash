@@ -1,0 +1,35 @@
+<div id="songResults">
+	<h3 ng-bind="selectedAlbum.name"></h3>
+	<h2 ng-show="!selectedAlbum.song.length">Click an album to list the songs</h2>
+
+	<div class="subactions" ng-hide="!selectedAlbum.song.length">
+		<button id="action_PlayAlbum" title="Play Album" ng-click="playAll()"><img src="images/play_gl_6x8.png"></button>
+		<button id="action_SelectAll" title="Select All" ng-click="selectAll()">All</button>
+		<button id="action_SelectNone" title="Select None" ng-click="selectNone()">None</button>
+		<button id="action_AddToQueue" title="Add To Queue" ng-click="addSongsToQueue()">+ Queue</button>
+		<button id="action_AddToPlaylist" title="Add Selected To Playlist" ng-click="loadPlaylistsForMenu()">+ Playlist</button>
+		<div id="submenu_AddToPlaylist" class="submenu shadow">
+			<a href="" ng-repeat="o in playlistMenu" ng-click="addToPlaylist(o.id)">{{o.name}}</a>
+		</div>
+	</div>
+
+	<ul class="songlist" ng-hide="!selectedAlbum.song.length">
+		<li class="row song" ng-repeat="o in selectedAlbum.song" ng-click="selectSong(o)" ng-dblclick="playSong(false, o)" ng-class="{'selected': o.selected, 'playing': o.playing}" data-bind="attr: { id: id, parentid: parentid, title: description }">
+		<div class="itemactions">
+			<a class="add" href="" title="Add To Play Queue" ng-click="addSongToQueue(o)" stop-event="click"></a>
+			<a class="remove" href="" title="Remove"></a>
+			<a class="play" href="" title="Play" ng-click="playSong(false, o)" stop-event="click"></a><a class="download" href="" title="Download"></a>
+			<a href="" title="Favorite" ng-class="{'favorite': o.starred, 'rate': !o.starred}" ng-click="updateFavorite(o)" stop-event="click"></a>
+		</div>
+
+		<span class="track" ng-bind="o.track"></span>
+		<span class="title" ng-bind="o.name"></span>
+		<span class="artist" ng-bind="o.artist"></span>
+
+		<a ng-href="#/library/0/{{o.albumId}}" class="albumblock" ng-show="o.album && itemType === 'pl'" stop-event="click" ng-bind="o.album" title="{{o.album}}"></a>
+		<a ng-href="#/archive/{{o.artist}}/{{o.parentid}}" class="albumblock" ng-show="o.album && itemType === 'archive'" stop-event="click" ng-bind="o.album" title="{{o.album}}"></a>
+
+		<span class="time">{{o.time}}</span>
+		</li>
+	</ul>
+</div>

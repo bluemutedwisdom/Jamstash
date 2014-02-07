@@ -3,6 +3,8 @@
 	/* for Swift.fm */
 	$rootScope.unity;
 
+	$rootScope.volume;
+
 	var player1 = '#playdeck';
 	var scrobbled = false;
 	var timerid = 0;
@@ -147,19 +149,20 @@
 
 		if (!loadonly) {
 			// Sway.fm UnityShim
-			var playerState = {
-				playing: true,
-				title: song.name,
-				artist: song.artist,
-				favorite: false,
-				albumArt: song.coverartfull
-			}
 			if ($rootScope.unity) {
-				$rootScope.unity.sendState(playerState);
+				$rootScope.unity.sendState
+				({
+					playing: true,
+					title: song.name,
+					artist: song.artist,
+					favorite: false,
+					albumArt: song.coverartfull
+				});
 			}
 			// End UnityShim
 		}
 
+		// scroll to playing
 		$('#Queue').stop().scrollTo('#' + song.id, 400);
 
 		scrobbled = false;
@@ -167,6 +170,7 @@
 		if (globals.settings.NotificationSong && !loadonly) {
 			notifications.showNotification(song.coverartthumb, utils.toHTML.un(song.name), utils.toHTML.un(song.artist + ' - ' + song.album), 'text', '#NextTrack');
 		}
+
 		if (globals.settings.ScrollTitle) {
 			var title = utils.toHTML.un(song.artist) + ' - ' + utils.toHTML.un(song.name);
 			utils.scrollTitle(title);
@@ -178,11 +182,7 @@
 
 	$scope.loadjPlayer = function (el, url, suffix, loadonly, position) {
 
-		var volume = 1;
-
-		utils.getValue('Volume', function(vol){
-			volume = parseFloat(vol);
-		})
+		var volume = $rootScope.volume;
 
 		var audioSolution = "html,flash";
 
@@ -199,6 +199,9 @@
 			wmode: "window",
 			solution: audioSolution,
 			supplied: suffix,
+			// TODO: preload might be set to auto or metadata if resuming closed session
+			//	but causes infinite retries if 404
+			preload: "none",
 			volume: volume,
 			errorAlerts: false,
 			warningAlerts: false,

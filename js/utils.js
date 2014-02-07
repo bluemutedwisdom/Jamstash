@@ -66,6 +66,9 @@ JamStash.service('utils', function (globals, model, $rootScope, $log, notificati
 		if(s !== null)
 			globals.settings = angular.fromJson(s)
 
+		var s = localStorage.getItem('Volume')
+		if(s !== null)
+			$rootScope.volume  = angular.fromJson(s)
 		/*
 		 *if (this.getValue("SavedCollections")) { globals.SavedCollections = utils.getValue("SavedCollections").split(","); }
 		 *if (this.getValue("SavedGenres")) { globals.SavedGenres = utils.getValue("SavedGenres").split(","); }
@@ -96,24 +99,59 @@ JamStash.service('utils', function (globals, model, $rootScope, $log, notificati
 		})
 	}
 
-	this.mapSong = function (data) {
-		var song = data;
+	this.mapSong = function (song) {
+
 		var url, title, track, rating, starred, contenttype, suffix, description;
 		var specs = '', coverartthumb = '', coverartfull = '';
+
 		if (typeof song.coverArt != 'undefined') {
 			coverartthumb = globals.BaseURL() + '/getCoverArt.view?' + globals.BaseParams() + '&size=60&id=' + song.coverArt;
 			coverartfull = globals.BaseURL() + '/getCoverArt.view?' + globals.BaseParams() + '&id=' + song.coverArt;
 		}
 		if (typeof song.description == 'undefined') { description = ''; } else { description = song.description; }
+
 		if (typeof song.title == 'undefined') { title = '&nbsp;'; } else { title = song.title.toString(); }
-		if (typeof song.track == 'undefined') { track = '&nbsp;'; } else { track = song.track.toString(); }
+
+		if (typeof song.track == 'undefined') { track = ''; } else { track = song.track.toString(); }
+
 		if (typeof song.starred !== 'undefined') { starred = true; } else { starred = false; }
+
+		if (song.artist == undefined) { song.artist = '' }
+
 		if (song.bitRate !== undefined) { specs += song.bitRate + ' Kbps'; }
+
 		if (song.transcodedSuffix !== undefined) { specs += ', transcoding:' + song.suffix + ' > ' + song.transcodedSuffix; } else { specs += ', ' + song.suffix; }
+
 		if (song.transcodedSuffix !== undefined) { suffix = song.transcodedSuffix; } else { suffix = song.suffix; }
+
 		if (suffix == 'ogg') { suffix = 'oga'; }
+
 		url = globals.BaseURL() + '/stream.view?' + globals.BaseParams() + '&id=' + song.id;
-		return new model.Song(song.id, song.parent, track, title, song.artist, song.artistId, song.album, song.albumId, coverartthumb, coverartfull, song.duration, song.userRating, starred, suffix, specs, url, 0, description);
+
+		return {
+			id: song.id,
+			parentid: song.parent,
+			track: track,
+			name: title,
+			artist: song.artist,
+			artistId: song.artist.id,
+			album: song.album,
+			albumId: song.albumId,
+			coverartthumb: coverartthumb,
+			coverartfull: coverartfull,
+			duration: song.duration,
+			rating: song.userRating,
+			starred: starred,
+			suffix: suffix,
+			specs: specs,
+			url: url,
+			position: 0,
+			description: description,
+			time: secondsToTime(song.duration),
+			selected: false,
+			playing: false,
+			displayName: title + " - " + song.album + " - " + song.artist
+		}
 	}
 
 	this.confirmDelete = function (text) {
@@ -125,11 +163,13 @@ JamStash.service('utils', function (globals, model, $rootScope, $log, notificati
 			return false;
 		}
 	}
+
 	this.makeBaseAuth = function (user, password) {
 		var tok = user + ':' + password;
 		var hash = $.base64Encode(tok);
 		return "Basic " + hash;
 	}
+
 	this.HexEncode = function (n) {
 		for (var u = "0123456789abcdef", i = [], r = [], t = 0; t < 256; t++)
 		i[t] = u.charAt(t >> 4) + u.charAt(t & 15);
@@ -137,6 +177,7 @@ JamStash.service('utils', function (globals, model, $rootScope, $log, notificati
 		r[t] = i[n.charCodeAt(t)];
 		return r.join("")
 	}
+
 	this.switchTheme = function (theme) {
 		switch (theme.toLowerCase()) {
 			case 'dark':
@@ -168,6 +209,7 @@ JamStash.service('utils', function (globals, model, $rootScope, $log, notificati
 		}
 		return seconds;
 	}
+
 	this.secondsToTime = function (secs) {
 		// secs = 4729
 		var times = new Array(3600, 60, 1);
@@ -195,43 +237,7 @@ JamStash.service('utils', function (globals, model, $rootScope, $log, notificati
 		}
 		return time;
 	}
-	this.arrayObjectIndexOf = function (myArray, searchTerm, property) {
-		for (var i = 0, len = myArray.length; i < len; i++) {
-			if (myArray[i][property] === searchTerm) return i;
-		}
-		return -1;
-	}
-	this.logObjectProperties = function (obj) {
-		$.each(obj, function (key, value) {
-			var parent = key;
-			if (typeof value === "object") {
-				$.each(value, function (key, value) {
-					console.log(parent + ' > ' + key + ' : ' + value);
-				});
-			} else {
-				console.log(key + ' : ' + value);
-			}
-		});
-	}
-	this.clickButton = function (el) {
-		var el = $(el);
-		if (el) {
-			var classes = $(el).attr('class').split(" ");
-			for (var i = 0, l = classes.length; i < l; ++i) {
-				var types = ['shuffle', 'mute'];
-				if (jQuery.inArray(classes[i], types) >= 0) {
-					var up = classes[i] + '_up';
-					if (el.hasClass(up)) {
-						el.removeClass(up);
-						return false;
-					} else {
-						el.addClass(up);
-						return true;
-					}
-				}
-			}
-		}
-	}
+
 	this.findKeyForCode = function (code) {
 		var map = { 'keymap': [
 			{ 'key': 'a', 'code': 65 },
@@ -270,6 +276,7 @@ JamStash.service('utils', function (globals, model, $rootScope, $log, notificati
 		});
 		return keyFound;
 	}
+
 	this.toHTML = {
 		on: function (str) {
 			var a = [],
@@ -284,26 +291,13 @@ JamStash.service('utils', function (globals, model, $rootScope, $log, notificati
 					   })
 		}
 	};
-	this.getParameterByName = function (name) {
-		name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
-		var regexS = "[\\?&]" + name + "=([^&#]*)";
-		var regex = new RegExp(regexS);
-		var results = regex.exec(window.location.search);
-		if (results == null)
-			return "";
-		else
-			return decodeURIComponent(results[1].replace(/\+/g, " "));
-	}
-	this.getPathFromUrl = function (url) {
-		var strurl = url.toString();
-		var u = strurl.substring(0, strurl.indexOf('?'));
-		return u
-	}
+
 	this.setTitle = function (text) {
 		if (text != "") {
 			document.title = text;
 		}
 	}
+
 	var timer = 0;
 	this.scrollTitle = function (text) {
 		var shift = {
@@ -333,14 +327,8 @@ JamStash.service('utils', function (globals, model, $rootScope, $log, notificati
 				document.title = t.join("");
 			}
 		}, opts.speed);
-		/*
-		   $.marqueeTitle({
-text: text,
-dir: "left",
-speed: 1200
-});
-*/
 	}
+
 	this.parseVersionString = function (str) {
 		if (typeof (str) != 'string') { return false; }
 		var x = str.split('.');
@@ -354,6 +342,7 @@ speed: 1200
 			patch: pat
 		}
 	}
+
 	this.checkVersion = function (runningVersion, minimumVersion) {
 		if (runningVersion.major >= minimumVersion.major) {
 			if (runningVersion.minor >= minimumVersion.minor) {
@@ -369,6 +358,7 @@ speed: 1200
 			return false;
 		}
 	}
+
 	this.checkVersionNewer = function (runningVersion, newVersion) {
 		if (runningVersion.major < newVersion.major) {
 			return true;
@@ -384,6 +374,7 @@ speed: 1200
 			}
 		}
 	}
+
 	this.parseDate = function (date) {
 		// input: "2012-09-23 20:00:00.0"
 		var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];

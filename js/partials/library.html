@@ -1,5 +1,5 @@
 <!-- Start: Library Tab -->
-<div id="tabLibrary" ui-sref-active="active">
+<div id="tabLibrary">
 
 	<div class="actions floatleft">
 		<button id="action_RefreshArtists" title="Refresh Artists" ng-click="refreshArtists()"><img class="pad" src="images/reload_9x11.png" /></button>
@@ -25,6 +25,18 @@
 
 			<ul id="AutoAlbumContainer" class="simplelist">
 				<li class="index" id="auto">Auto Albums</li>
+
+				<li class="item" ui-sref-active="selected">
+				<a ui-sref="library.recent()">Recently Added</a>
+				<div class="AutoAlbumControls">
+					<a href class="nextprev hover" title="Previous" ui-sref="library.recent({offset: 'prev'})">&lsaquo;</a>
+					<a href class="nextprev hover" title="Next" ui-sref="library.recent({offset: 'next'})">&rsaquo;</a>
+				</div>
+				</li>
+				<li class="item" ui-sref-active="selected">
+				<a ui-sref="library.random()">Recently Added</a>
+				</li>
+
 				<li class="item" ng-repeat="o in AutoAlbums" id="{{o.id}}" ng-click="getAlbumListBy(o.id)" ng-class="{'selected': selectedAutoAlbum == o.id }">
 				<span>{{o.name}}</span>
 				<div class="AutoAlbumControls">
@@ -49,88 +61,15 @@
 			<ul class="simplelist" ng-repeat="o in index">
 				<li class="index" title="Scroll to Top" id="{{o.name}}" ng-click="scrollToTop()"><a>{{o.name}}</a></li>
 				<ul class="simplelist artistlist">
-					<li ng-repeat="a in o.artist" class="item" ui-sref-active="selected" ><a ui-sref=".artist({artistId: a.id})" ng-bind="a.name"></a></li>
+					<li ng-repeat="a in o.artist" class="item" ui-sref-active="selected" ><a ui-sref="library.artist({artistId: a.id})" ng-bind="a.name"></a></li>
 				</ul>
 			</ul>
 
 		</div>
-		<div id="SubsonicResults" ui-view="albums">
+		<div id="SubsonicResults">
 
 			<!-- Albums -->
-			<div id="AlbumsList">
-
-				<select id="SelectedAlbumSort" ng-model="SelectedAlbumSort" ng-options="s as s.name for s in AlbumSort">
-				</select>
-
-				<select id="SelectedAlbumDisplay" ng-model="SelectedAlbumDisplay" ng-options="s as s.name for s in AlbumDisplay">
-				</select>
-
-				<ol id="BreadCrumbs">
-					<li class="crumb" ng-repeat="o in BreadCrumbs | filter:{type:'artist'}"><a ng-click="getAlbums(o)">{{o.name}}</a> &gt;</li>
-					<li class="crumb" ng-repeat="o in BreadCrumbs | filter:{type:'album'}"><a ng-click="getSongs(o.id, '')">{{o.name}}</a> &gt;</li>
-				</ol>
-
-				<div style="clear:both"></div>
-
-				<h3 ng-hide="!selectedArtist.album.length">Albums<span ng-hide="!selectedArtist"> &mdash; {{selectedArtist.name}}</span></h3>
-				<ul class="albumlist" ng-hide="!selectedArtist.album.length" ng-class="SelectedAlbumDisplay.id">
-					<li class="album" id="{{o.id}}" parentid="{{o.parent}}" ng-repeat="o in selectedArtist.album | orderBy: SelectedAlbumSort.id" ui-sref-active="selected">
-					<a ui-sref="library.artist.album({albumId: o.id})"><img ng-src="{{o.coverartthumb}}" src="images/albumdefault_160.jpg"></a>
-					<span class="year" ng-bind="o.year"></span>
-					<div class="itemactions">
-						<a class="add" href="" title="Add To Play Queue" ng-click="getSongs(o.id, 'add')" stop-event="click"></a>
-						<a class="play" href="" title="Play" ng-click="getSongs(o.id, 'play')" stop-event="click"></a>
-						<a class="download" href="" ng-click="download(o.id)" title="Download" stop-event="click"></a>
-						<a title="Favorite" href="" ng-class="{'favorite': o.starred, 'rate': !o.starred}" ng-click="updateFavorite(o)" stop-event="click"></a>
-						<a class="info hover" href="" title="{{'Created: ' + o.date}}"></a>
-					</div>
-					<div class="albuminfo">
-						<div class="artist" ng-bind="o.artist"></div>
-						<a class="title" ui-sref="library.artist.album({albumId: o.id})"><h4 ng-bind="o.name"></h4></a>
-					</div>
-					<div style="clear: both"></div>
-					</li>
-				</ul>
-				<div style="clear: both"></div>
-
-			</div>
-
-			<div ui-view="songs">
-
-				<div id="songResults">
-					<h3 ng-bind="selectedAlbum.name"></h3>
-					<h2 ng-show="!selectedAlbum.song.length">Click an album to list the songs</h2>
-
-					<div class="subactions">
-						<button id="action_PlayAlbum" title="Play Album" ng-click="playAll()" ng-hide="!song.length"><img src="images/play_gl_6x8.png"></button>
-						<button id="action_SelectAll" title="Select All" ng-click="selectAll()">All</button>
-						<button id="action_SelectNone" title="Select None" ng-click="selectNone()">None</button>
-						<button id="action_AddToQueue" title="Add To Queue" ng-click="addSongsToQueue()">+ Queue</button>
-						<button id="action_AddToPlaylist" title="Add Selected To Playlist" ng-click="loadPlaylistsForMenu()">+ Playlist</button>
-						<div id="submenu_AddToPlaylist" class="submenu shadow">
-							<a href="" ng-repeat="o in playlistMenu" ng-click="addToPlaylist(o.id)">{{o.name}}</a>
-						</div>
-					</div>
-
-					<ul class="songlist" ng-hide="!selectedAlbum.song.length">
-						<li class="row song" ng-repeat="o in selectedAlbum.song" ng-click="selectSong(o)" ng-dblclick="playSong(false, o)" ng-class="{'selected': o.selected, 'playing': o.playing}" data-bind="attr: { id: id, parentid: parentid, title: description }">
-						<div class="itemactions">
-							<a class="add" href="" title="Add To Play Queue" ng-click="addSongToQueue(o)" stop-event="click"></a>
-							<a class="remove" href="" title="Remove"></a>
-							<a class="play" href="" title="Play" ng-click="playSong(false, o)" stop-event="click"></a><a class="download" href="" title="Download"></a>
-							<a href="" title="Favorite" ng-class="{'favorite': o.starred, 'rate': !o.starred}" ng-click="updateFavorite(o)" stop-event="click"></a>
-						</div>
-
-						<span class="track" ng-bind="o.track"></span>
-						<span class="title" title="{{o.description}}" ng-bind="o.name"></span>
-
-						<a ng-href="#/library/0/{{o.albumId}}" class="albumblock" ng-show="o.album && itemType === 'pl'" stop-event="click" ng-bind="o.album" title="{{o.album}}"></a>
-						<a ng-href="#/archive/{{o.artist}}/{{o.parentid}}" class="albumblock" ng-show="o.album && itemType === 'archive'" stop-event="click" ng-bind="o.album" title="{{o.album}}"></a>
-
-						<span class="time">{{o.time}}</span>
-						</li>
-					</ul>
-				</div>
+			<div id="AlbumsList" ui-view="albums">
 			</div>
 		</div>
 	</div>

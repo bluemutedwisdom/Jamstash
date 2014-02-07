@@ -1,13 +1,12 @@
 ﻿JamStash.controller('PlaylistCtrl',
 function PlaylistCtrl($scope, $rootScope, $location, utils, globals, model, notifications) {
-    //$("#left-component").layout($scope.layoutTwoCol);
 
-    $rootScope.song = [];
     $scope.itemType = 'pl';
     $scope.playlists = [];
     $scope.playlistsPublic = [];
     $scope.playlistsGenre = globals.SavedGenres;
     $scope.selectedGenre;
+
     $scope.$watch("selectedGenre", function (newValue, oldValue) {
         if (newValue !== oldValue) {
             globals.SavedGenres.push(newValue);
@@ -15,6 +14,7 @@ function PlaylistCtrl($scope, $rootScope, $location, utils, globals, model, noti
             utils.setValue('SavedGenres', globals.SavedGenres.join(), false);
         }
     });
+
     $scope.getPlaylists = function (refresh) {
         if (globals.settings.Debug) { console.log("LOAD PLAYLISTS"); }
         $.ajax({
@@ -42,6 +42,7 @@ function PlaylistCtrl($scope, $rootScope, $location, utils, globals, model, noti
             }
         });
     }
+
     $scope.getPlaylist = function (id, action) {
         $rootScope.selectedAutoPlaylist = null;
         $rootScope.selectedPlaylist = id;
@@ -89,6 +90,7 @@ function PlaylistCtrl($scope, $rootScope, $location, utils, globals, model, noti
             }
         });
     }
+
     $scope.getStarred = function (action, type) {
         var size = globals.settings.AutoPlaylistSize;
         $rootScope.selectedPlaylist = null;

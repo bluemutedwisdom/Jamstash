@@ -1,0 +1,42 @@
+<select id="SelectedAlbumSort" ng-model="SelectedAlbumSort" ng-options="s as s.name for s in AlbumSort">
+</select>
+
+<select id="SelectedAlbumDisplay" ng-model="SelectedAlbumDisplay" ng-options="s as s.name for s in AlbumDisplay">
+</select>
+
+<ol id="BreadCrumbs">
+	<li class="crumb" ng-repeat="o in BreadCrumbs | filter:{type:'artist'}"><a ng-click="getAlbums(o)">{{o.name}}</a> &gt;</li>
+	<li class="crumb" ng-repeat="o in BreadCrumbs | filter:{type:'album'}"><a ng-click="getSongs(o.id, '')">{{o.name}}</a> &gt;</li>
+</ol>
+
+<div style="clear:both"></div>
+
+<h3 ng-hide="!selectedArtist.album.length">Albums<span ng-hide="!selectedArtist"> &mdash; {{selectedArtist.name}}</span></h3>
+
+<ul class="albumlist" ng-hide="!selectedArtist.album.length" ng-class="SelectedAlbumDisplay.id">
+	<li class="album" id="{{o.id}}" parentid="{{o.parent}}" ng-repeat="o in selectedArtist.album | orderBy: SelectedAlbumSort.id" ui-sref-active="selected" scroll-if="o.id == selectedAlbum.id">
+	<a ui-sref=".album({albumId: o.id})" stop-event="click">
+		<img ng-src="{{o.coverartthumb}}" src="images/albumdefault_160.jpg">
+	</a>
+	<span class="year" ng-bind="o.year"></span>
+	<div class="itemactions">
+		<a class="add"  title="Add To Play Queue" ng-click="getSongs(o.id, 'add')" stop-event="click"></a>
+		<a class="play"  title="Play" ng-click="getSongs(o.id, 'play')" stop-event="click"></a>
+		<a class="download"  ng-click="download(o.id)" title="Download" stop-event="click"></a>
+		<a title="Favorite"  ng-class="{'favorite': o.starred, 'rate': !o.starred}" ng-click="updateFavorite(o)" stop-event="click"></a>
+		<a class="info hover"  title="{{'Created: ' + o.date}}"></a>
+	</div>
+	<div style="clear: both"></div>
+	<div class="albuminfo">
+		<a class="title" ui-sref=".album({albumId: o.id})" stop-event="click">
+			<h4 ng-bind="o.name"></h4>
+		</a>
+		<span class="artist" ng-bind="o.artist"></span>
+	</div>
+	<div style="clear: both"></div>
+	</li>
+</ul>
+
+<div ui-view="songs">
+
+</div>

@@ -497,22 +497,29 @@ $rootScope.Genres = items;
 
 		if (offset == 'next')
 		{
+			$log.debug('increment offset')
 			$scope.offset += globals.settings.AutoAlbumSize
 		}
 		else if (offset == 'prev')
 		{
+			$log.debug('decrement offset')
 			$scope.offset -= globals.settings.AutoAlbumSize
 			if($scope.offset < 0)
 				$scope.offset = 0;
 		}
-		else if (!isNaN(offset) && offset > 0)
+		else if (!isNaN(offset) && offset > 0 && offset != '')
 		{
+			$log.debug('numeric offset: ' + offset)
 			$scope.offset = offset
 		}
 		else
+		{
+			$log.debug('reset offset to 0')
 			$scope.offset = 0
+		}
 
-		$state.go($state.current, {offset: $scope.offset})
+		$log.debug('reloading state ' + $state.current.name + ' with offset: ' + $scope.offset)
+		$state.go($state.current.name, {offset: $scope.offset})
 	}
 
 
@@ -522,8 +529,13 @@ $rootScope.Genres = items;
 	 */
 
 	utils.getValue("Indexes", function(i){
-		$log.debug('index loaded')
-		$rootScope.index = i;
+		if(i)
+		{
+			$log.debug('index loaded from async')
+			$rootScope.index = i;
+		}
+		else
+			$log.debug('no saved artist index')
 	})
 
 	$scope.getMusicFolders();

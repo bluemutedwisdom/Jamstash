@@ -27,14 +27,14 @@
 				<li class="index" id="auto">Auto Albums</li>
 
 				<li class="item" ui-sref-active="selected">
-				<a ui-sref="library.recent()">Recently Added</a>
+				<a ui-sref="library.recent({offset: 0})">Recently Added</a>
 				<div class="AutoAlbumControls">
 					<a href class="nextprev hover" title="Previous" ui-sref="library.recent({offset: 'prev'})">&lsaquo;</a>
 					<a href class="nextprev hover" title="Next" ui-sref="library.recent({offset: 'next'})">&rsaquo;</a>
 				</div>
 				</li>
 				<li class="item" ui-sref-active="selected">
-				<a ui-sref="library.random()">Recently Added</a>
+				<a ui-sref="library.random()">Random</a>
 				</li>
 
 				<li class="item" ng-repeat="o in AutoAlbums" id="{{o.id}}" ng-click="getAlbumListBy(o.id)" ng-class="{'selected': selectedAutoAlbum == o.id }">

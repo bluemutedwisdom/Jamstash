@@ -87,7 +87,7 @@
 		<ol id="Queue" class="songlist noselect" sortable>
 			<li class="row song" ng-repeat="o in queue track by $index" ng-class="{'playing': o.playing, 'selected': o.selected}" ng-click="selectSong(o)" ng-dblclick="playSong(false, o)" id="{{o.id}}" parentid="{{o.parentid}}">
 			<div class="albumart">
-				<img class="fancybox" ng-src="{{o.coverartfull}}" src="images/albumdefault_60.jpg" />
+				<img ng-src="{{o.coverartthumb}}" src="images/albumdefault_60.jpg" />
 			</div>
 			<div class="title" title="{{ o.track + ' - ' + o.name + ' - ' + o.time }}" ng-bind="o.name"></div>
 			<div class="albumtext" title="{{o.album}}" ng-bind="o.album"></div>

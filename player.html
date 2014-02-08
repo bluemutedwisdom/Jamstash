@@ -6,14 +6,15 @@
 		<button id="PauseTrack" title="Play/Pause" style="display: none;"><img src="images/pause_24x32.png" /></button>
 		<button id="NextTrack" title="Next Track" ng-click="nextTrack()"><img src="images/last_24x24.png" /></button>
 	</div>
+
+	<a class="coverartfancy" rel="coverart" fancybox="{{playingSong.coverartfull}}" title="{{playingSong.artist}} - {{playingSong.album}}" href>
+		<img ng-src="{{playingSong.coverartfull}}" src="images/albumdefault_60.jpg" alt="" />
+	</a>
+
 	<div id="songdetails">
-		<div id="coverart">
-			<a class="coverartfancy" href="{{playingSong.coverartfull}}">
-				<img ng-src="{{playingSong.coverartthumb}}" src="images/albumdefault_60.jpg" alt="" />
-			</a>
-		</div>
+
 		<span class="album" ng-bind="playingSong.album"></span>
-		<span class="specs" ng-bind="playingSong.specs"></span>
+
 		<div id="songdetails_controls">
 			<a href="" id="action_Mute" class="mute first" title="Mute"></a>
 			<a href="" id="action_UnMute" class="unmute first" title="Unmute" style="display: none;"></a>
@@ -29,6 +30,7 @@
 
 <div class="audiojs">
 	<span class="song" ng-bind="playingSong.name"></span>
+	<span class="specs" ng-bind="playingSong.specs"></span>
 	<div class="scrubber"><div class="progress"></div><div class="loaded"></div></div>
 	<div class="time"><em id="played">00:00</em>/<strong id="duration">00:00</strong></div>
 	<div class="error-message"></div>

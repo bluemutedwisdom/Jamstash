@@ -8,7 +8,6 @@ JamStash.service('utils', function (globals, model, $rootScope, $log, notificati
 
 	this.setValue = function (key, value, notify) {
 
-
 		if($rootScope.db !== undefined)
 		{
 			if(value === null)
@@ -17,8 +16,8 @@ JamStash.service('utils', function (globals, model, $rootScope, $log, notificati
 				return
 			}
 
-			$rootScope.db.setItem(key, value, function(){
-				$log.debug('set ' + key)
+			$rootScope.db.setItem(key, angular.toJson(value), function(){
+				$log.debug('set ' + key + ' to ' + value)
 			})
 
 			return
@@ -46,14 +45,18 @@ JamStash.service('utils', function (globals, model, $rootScope, $log, notificati
 
 		if($rootScope.db !== undefined)
 		{
-			$rootScope.db.getItem(key, callback)
-			return
+			$rootScope.db.getItem(key, function(value){
+				callback(angular.fromJson(value))
+			})
 		}
 
 		asyncStorage.create("JamstashDB", function(db, num){
 			$log.debug('Finished Loading: ' + key)
 			$rootScope.db = db;
-			$rootScope.db.getItem(key, callback)
+			$rootScope.db.getItem(key, function(value){
+				callback(angular.fromJson(value))
+
+			})
 		})
 	}
 
@@ -81,6 +84,7 @@ JamStash.service('utils', function (globals, model, $rootScope, $log, notificati
 		// Load Saved Song
 		this.getValue('CurrentSong', function(song){
 			if (song) {
+				$log.debug('loading saved song in to player: ' + song)
 				$rootScope.playSong(true, song);
 			}
 		})
@@ -285,6 +289,7 @@ JamStash.service('utils', function (globals, model, $rootScope, $log, notificati
 			return "&#" + a.join(";&#") + ";"
 		},
 		un: function (str) {
+			if(str != undefined)
 			return str.replace(/&#(x)?([^;]{1,5});?/g,
 					   function (a, b, c) {
 						   return String.fromCharCode(parseInt(c, b ? 16 : 10))

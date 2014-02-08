@@ -28,13 +28,12 @@ JamStash.config(function ($locationProvider, $stateProvider, $urlRouterProvider,
 				templateUrl: 'js/partials/albums.html',
 				controller: function($scope, $log, $stateParams){
 
-					if(isNaN($stateParams.offset))
+					if(isNaN($stateParams.offset) || $stateParams.offset === '')
 					{
+						$log.debug('calculating offset')
 						$scope.calcOffset($stateParams.offset)
 						return
 					}
-					else if ($stateParams.offset > 0)
-						$scope.$parent.offset = parseInt($stateParams.offset)
 
 					$log.debug('loading recently added with offset: ' + $stateParams.offset)
 					$scope.getAlbumListBy('newest', $stateParams.offset);

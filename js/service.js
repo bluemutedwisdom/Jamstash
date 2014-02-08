@@ -142,33 +142,53 @@ JamStash.directive('scrollIf', function(){
 			return scope.$eval(attrs.scrollIf)
 		}, function(val){
 			if(val)
-			{
-				var list = $('#AlbumsList')
-				var child = $(element);
+				{
+					var list = $('#AlbumsList')
+					var child = $(element);
 
-				list.animate({scrollTop: list.scrollTop() + (child.position().top - list.position().top) - (list.height()/2) + (child.height()/2)}, 1000)
-			}
+					list.animate({scrollTop: list.scrollTop() + (child.position().top - list.position().top) - (list.height()/2) + (child.height()/2)}, 1000)
+				}
 		})
 	}
 })
 
-JamStash.directive('fancybox', function ($compile) {
+JamStash.directive('fancybox', function ($log) {
 	return {
 		restrict: 'A',
-		replace: false,
-		link: function($scope, element, attrs) {
-			$scope.fancyboxOpen = function() {
-				var el = angular.element(element.html()),
-				compiled = $compile(el);
-				$.fancybox.open(el);
-				compiled($scope);
-			};
-			$scope.fancyboxOpenUrl = function () {
-				var el = angular.element(element.html()),
-				compiled = $compile(el);
-				$.fancybox.open(el);
-				compiled($scope);
-			};
+		scope: {
+			fancybox: "@"
+		},
+		link: function(scope, element, attrs) {
+
+			element.attr('rel', 'covers');
+
+			scope.$watch(function() { return scope.fancybox; }, function(newval) {
+
+				$(element).children().fancybox({
+					onStart: function(items, index, options) {
+
+						var arrowStyle = {
+							height: '100%',
+							bottom: 0
+						};
+
+						angular.extend(options, {
+							title: $(element).parent().attrs.title,
+							titlePosition: 'inside',
+							speedIn: 150,
+							speedOut: 150
+						});
+
+						// image
+						options.type = 'image';
+
+						return options;
+					},
+					afterClose: function() {
+						$(element).children().show();
+					}
+				})
+			}, true)
 		}
 	};
 });

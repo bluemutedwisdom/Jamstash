@@ -1,1568 +1,1561 @@
 .albumlist.grid .album .year {
-     display: inline-block;
-     padding: 7px 0px 0px 15px;
+	display: inline-block;
+	padding: 7px 0px 0px 15px;
 }
 
 .albumlist.grid .albuminfo .artist {
-     font-size: 12px;
+	font-size: 12px;
 }
 
 #songResults h3 {
-     float: left;
-     margin-left: 10px;
+	float: left;
+	margin-left: 10px;
 }
 
 ul.songlist .row.selected .track {
-     background-image: url("../images/check_8x7.png");
-     background-position: 14px center;
-     background-repeat: no-repeat;
+	background-image: url("../images/check_8x7.png");
+	background-position: 14px center;
+	background-repeat: no-repeat;
 }
 
 #AZIndex {
-     float: right;
+	float: right;
 }
 
 #AZIndex a {
-     color: #7EA8D5;
-     display: block;
-     font-size: 24px;
-     padding: 5px 10px;
-     text-decoration: none;
+	color: #7EA8D5;
+	display: block;
+	font-size: 24px;
+	padding: 5px 10px;
+	text-decoration: none;
 }
 
 #AlbumsList {
-     height: 70%;
-     margin-left: 15px;
-     overflow-y: auto;
+	height: 70%;
+	margin-left: 15px;
+	overflow-y: auto;
 }
 
 #AutoAlbumContainer .nextprev {
-     padding: 0px 4px;
+	padding: 0px 4px;
 }
 
 #AutoAlbumContainer li.item {
-     padding: 6px 8px;
+	padding: 6px 8px;
 }
 
 #BreadCrumbs {
-     display: inline-block;
-     font-size: 12px;
-     list-style-type: none;
-     margin-left: 15px;
-     padding: 0px;
+	display: inline-block;
+	font-size: 12px;
+	list-style-type: none;
+	margin-left: 15px;
+	padding: 0px;
 }
 
 #BreadCrumbs .crumb {
-     float: left;
+	float: left;
 }
 
 #BreadCrumbs a {
-     color: #829FC0;
-     cursor: pointer;
-     text-decoration: none;
+	color: #829FC0;
+	cursor: pointer;
+	text-decoration: none;
 }
 
 #ChatMsgs {
-     border-bottom: 1px solid #F2F2F2;
-     bottom: 38px;
-     margin: 0px 0px 2px;
-     overflow-x: hidden;
-     overflow-y: auto;
-     padding: 5px;
-     position: absolute;
-     text-align: right;
-     top: 220px;
-     width: 192px;
+	border-bottom: 1px solid #F2F2F2;
+	bottom: 38px;
+	margin: 0px 0px 2px;
+	overflow-x: hidden;
+	overflow-y: auto;
+	padding: 5px;
+	position: absolute;
+	text-align: right;
+	top: 220px;
+	width: 192px;
 }
 
 #ChatMsgs .msg {
-     margin: 0px 0px 5px;
+	margin: 0px 0px 5px;
 }
 
 #ChatMsgs span.time {
-     color: #CAD0D7;
-     font-size: 9px;
+	color: #CAD0D7;
+	font-size: 9px;
 }
 
 #ChatMsgs span.user, #NowPlayingList span.user {
-     color: #B3B8BE;
-     font-size: 10px;
+	color: #B3B8BE;
+	font-size: 10px;
 }
 
 #NowPlaying {
-     border-bottom: 1px solid #F2F2F2;
-     margin: 2px 0px;
+	border-bottom: 1px solid #F2F2F2;
+	margin: 2px 0px;
 }
 
 #NowPlayingList {
-     height: 150px;
-     overflow-x: hidden;
-     overflow-y: auto;
-     padding: 5px;
-     text-align: right;
+	height: 150px;
+	overflow-x: hidden;
+	overflow-y: auto;
+	padding: 5px;
+	text-align: right;
 }
 
 #NowPlayingList .msg {
-     font-size: 11px;
-     margin: 0px 0px 5px;
+	font-size: 11px;
+	margin: 0px 0px 5px;
 }
 
 #Queue {
-     background: none repeat scroll 0% 0% rgba(91, 91, 78, 0.4);
-     bottom: 75px;
-     list-style-type: none;
-     margin: 0px;
-     overflow-y: scroll;
-     padding: 0px 5px;
-     position: absolute;
-     right: 0px;
-     top: 0px;
-     width: 165px;
+	background: none repeat scroll 0% 0% rgba(91, 91, 78, 0.4);
+	bottom: 75px;
+	list-style-type: none;
+	margin: 0px;
+	overflow-y: scroll;
+	padding: 0px 5px;
+	position: absolute;
+	right: 0px;
+	top: 0px;
+	width: 165px;
 }
 
 #Queue .row:first-child {
-     margin-top: 5px;
+	margin-top: 5px;
 }
 
 #Queue .row {
-     cursor: pointer;
-     padding-bottom: 5px;
+	cursor: pointer;
+	padding-bottom: 5px;
 }
 
 #Queue .row img {
-     display: block;
-     height: auto;
-     width: 100%;
+	display: block;
+	height: auto;
+	width: 100%;
 }
 
 #Queue .row .albumtext {
-     margin: auto;
-     overflow: hidden;
-     white-space: nowrap;
-     width: 90%;
+	margin: auto;
+	overflow: hidden;
+	white-space: nowrap;
+	width: 90%;
 }
 
 #Queue .row .title {
-     font-weight: 700;
-     margin-top: 5px;
-     overflow: hidden;
-     white-space: nowrap;
+	font-weight: 700;
+	margin-top: 5px;
+	overflow: hidden;
+	white-space: nowrap;
 }
 
 #Queue .row .track, #Queue .row .time {
-     width: auto;
+	width: auto;
 }
 
 #Queue li {
-     background: none repeat scroll 0% 0% #EFEFEE;
-     border-radius: 2px;
-     font-size: 11px;
-     margin: 0px 0px 5px;
-     overflow: hidden;
-     padding: 0px;
-     text-align: center;
+	background: none repeat scroll 0% 0% #EFEFEE;
+	border-radius: 2px;
+	font-size: 11px;
+	margin: 0px 0px 5px;
+	overflow: hidden;
+	padding: 0px;
+	text-align: center;
 }
 
 #Queue li.playing {
-     background-color: #528AC6;
-     border-color: #294563;
-     color: #FFFFFF;
+	background-color: #528AC6;
+	border-color: #294563;
+	color: #FFFFFF;
 }
 
 #SideBar {
-     -moz-border-bottom-colors: none;
-     -moz-border-left-colors: none;
-     -moz-border-right-colors: none;
-     -moz-border-top-colors: none;
-     background: none repeat scroll 0px 0px #FCFCFC;
-     border-color: #CBCBCB -moz-use-text-color #CBCBCB #CBCBCB;
-     border-image: none;
-     border-style: solid none solid solid;
-     border-width: 1px medium 1px 1px;
-     bottom: 200px;
-     display: none;
-     min-height: 350px;
-     opacity: 0.85;
-     position: absolute;
-     right: 0px;
-     top: 40px;
-     width: 200px;
+	-moz-border-bottom-colors: none;
+	-moz-border-left-colors: none;
+	-moz-border-right-colors: none;
+	-moz-border-top-colors: none;
+	background: none repeat scroll 0px 0px #FCFCFC;
+	border-color: #CBCBCB -moz-use-text-color #CBCBCB #CBCBCB;
+	border-image: none;
+	border-style: solid none solid solid;
+	border-width: 1px medium 1px 1px;
+	bottom: 200px;
+	display: none;
+	min-height: 350px;
+	opacity: 0.85;
+	position: absolute;
+	right: 0px;
+	top: 40px;
+	width: 200px;
 }
 
 #SideBar .header {
-     color: #545454;
-     font-size: 12px;
-     font-variant: small-caps;
-     font-weight: 700;
-     padding: 5px;
+	color: #545454;
+	font-size: 12px;
+	font-variant: small-caps;
+	font-weight: 700;
+	padding: 5px;
 }
 
 #SideBar .submit {
-     bottom: 0px;
-     padding: 0px 2px;
-     position: absolute;
+	bottom: 0px;
+	padding: 0px 2px;
+	position: absolute;
 }
 
 #TrackContainer, #PodcastContainer {
-     margin: 5px 5px 5px 0px;
-     width: 60%;
+	margin: 5px 5px 5px 0px;
+	width: 60%;
 }
 
 #container {
-     height: 100%;
-     overflow: hidden;
-     text-align: left;
-     width: 100%;
+	height: 100%;
+	overflow: hidden;
+	text-align: left;
+	width: 100%;
 }
 
 #content {
-     background: none repeat scroll 0% 0% #EDEDED;
+	background: none repeat scroll 0% 0% #EDEDED;
 }
 
 #content h2 {
-     font-size: 18px;
-     margin: 5px;
-     padding: 0px;
-}
-
-#coverart {
-     float: left;
-     height: 60px;
-     margin: 1px 8px 0px 1px;
-     overflow: hidden;
-     padding: 2px;
-     width: 60px;
+	font-size: 18px;
+	margin: 5px;
+	padding: 0px;
 }
 
 #donate {
-     background: none repeat scroll 0% 0% #F2F2F2;
-     border: 1px solid #E0E0E0;
-     padding: 10px;
-     text-align: center;
-     width: 200px;
+	background: none repeat scroll 0% 0% #F2F2F2;
+	border: 1px solid #E0E0E0;
+	padding: 10px;
+	text-align: center;
+	width: 200px;
 }
 
 #globalactions {
-     height: 29px;
-     margin: 5px 0px 0px;
-     position: absolute;
-     right: 235px;
-     top: 0px;
+	height: 29px;
+	margin: 5px 0px 0px;
+	position: absolute;
+	right: 235px;
+	top: 0px;
 }
 
 #jslogo {
-     background: url("../images/favicon_32x32.png") no-repeat scroll 0px 0px transparent;
-     cursor: pointer;
-     height: 32px;
-     left: 12px;
-     position: absolute;
-     top: 6px;
-     width: 32px;
+	background: url("../images/favicon_32x32.png") no-repeat scroll 0px 0px transparent;
+	cursor: pointer;
+	height: 32px;
+	left: 12px;
+	position: absolute;
+	top: 6px;
+	width: 32px;
 }
 
 #jslogo:hover {
-     background: url("../images/favicon_32x32.png") no-repeat scroll 0px 1px transparent;
+	background: url("../images/favicon_32x32.png") no-repeat scroll 0px 1px transparent;
 }
 
 #SubsonicIndex, #PlaylistsIndex {
-     float: left;
-     height: 100%;
-     overflow-y: scroll;
-     width: 25%;
+	float: left;
+	height: 100%;
+	overflow-y: scroll;
+	width: 25%;
 }
 
 #loading {
-     background: url("../images/spinner.gif") no-repeat scroll center center #111111;
-     border-radius: 8px;
-     display: none;
-     height: 64px;
-     left: 50%;
-     margin-right: -32px;
-     margin-top: -32px;
-     position: fixed;
-     top: 50%;
-     width: 64px;
-     z-index: 9999;
+	background: url("../images/spinner.gif") no-repeat scroll center center #111111;
+	border-radius: 8px;
+	display: none;
+	height: 64px;
+	left: 50%;
+	margin-right: -32px;
+	margin-top: -32px;
+	position: fixed;
+	top: 50%;
+	width: 64px;
+	z-index: 9999;
 }
 
 #messages {
-     bottom: 5px;
-     display: none;
-     font-size: 12px;
-     max-height: 205px;
-     overflow: hidden;
-     position: absolute;
-     right: 5px;
-     width: 200px;
-     z-index: 999;
+	bottom: 5px;
+	display: none;
+	font-size: 12px;
+	max-height: 205px;
+	overflow: hidden;
+	position: absolute;
+	right: 5px;
+	width: 200px;
+	z-index: 999;
 }
 
 #messages .message {
-     background: none repeat scroll 0% 0% #FFFFFF;
-     border-radius: 4px;
-     border: 1px solid #A6CBF3;
-     box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
-     color: #4B95E5;
-     cursor: pointer;
-     float: right;
-     margin: 2px 5px 2px 0px;
-     opacity: 0.95;
-     padding: 5px;
+	background: none repeat scroll 0% 0% #FFFFFF;
+	border-radius: 4px;
+	border: 1px solid #A6CBF3;
+	box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+	color: #4B95E5;
+	cursor: pointer;
+	float: right;
+	margin: 2px 5px 2px 0px;
+	opacity: 0.95;
+	padding: 5px;
 }
 
 #my-divider {
-     left: 20em;
-     width: 5px;
+	left: 20em;
+	width: 5px;
 }
 
 #nav {
-     height: 54px;
-     left: 50px;
-     position: absolute;
-     top: 2px;
-     z-index: 99;
+	height: 54px;
+	left: 50px;
+	position: absolute;
+	top: 2px;
+	z-index: 99;
 }
 
 #nav a {
-     -moz-border-bottom-colors: none;
-     -moz-border-left-colors: none;
-     -moz-border-right-colors: none;
-     -moz-border-top-colors: none;
-     background: none repeat scroll 0% 0% #F4F4F4;
-     border-color: #E4E4E4 #E4E4E4 -moz-use-text-color #D5D5D5;
-     border-image: none;
-     border-style: solid solid none;
-     border-width: 1px 1px medium;
-     color: #7C7C7C;
-     display: block;
-     font-size: 17px;
-     font-weight: 700;
-     height: 21px;
-     letter-spacing: -1px;
-     padding: 8px 12px;
-     text-decoration: none;
+	-moz-border-bottom-colors: none;
+	-moz-border-left-colors: none;
+	-moz-border-right-colors: none;
+	-moz-border-top-colors: none;
+	background: none repeat scroll 0% 0% #F4F4F4;
+	border-color: #E4E4E4 #E4E4E4 -moz-use-text-color #D5D5D5;
+	border-image: none;
+	border-style: solid solid none;
+	border-width: 1px 1px medium;
+	color: #7C7C7C;
+	display: block;
+	font-size: 17px;
+	font-weight: 700;
+	height: 21px;
+	letter-spacing: -1px;
+	padding: 8px 12px;
+	text-decoration: none;
 }
 
 #nav a img, #nav a.active img {
-     display: block;
-     margin: 3px 0px 4px 1px;
+	display: block;
+	margin: 3px 0px 4px 1px;
 }
 
 #nav a.active {
-     -moz-border-bottom-colors: none;
-     -moz-border-left-colors: none;
-     -moz-border-right-colors: none;
-     -moz-border-top-colors: none;
-     background: none repeat scroll 0% 0% #FFFFFF;
-     border-color: #CBCBCB #CBCBCB -moz-use-text-color;
-     border-image: none;
-     border-style: solid solid none;
-     border-width: 1px 1px medium;
-     box-shadow: -2px 1px 2px -2px rgba(0, 0, 0, 0.25);
-     color: #545454;
-     padding: 8px 12px 9px;
+	-moz-border-bottom-colors: none;
+	-moz-border-left-colors: none;
+	-moz-border-right-colors: none;
+	-moz-border-top-colors: none;
+	background: none repeat scroll 0% 0% #FFFFFF;
+	border-color: #CBCBCB #CBCBCB -moz-use-text-color;
+	border-image: none;
+	border-style: solid solid none;
+	border-width: 1px 1px medium;
+	box-shadow: -2px 1px 2px -2px rgba(0, 0, 0, 0.25);
+	color: #545454;
+	padding: 8px 12px 9px;
 }
 
 #nav a.active:hover {
-     -moz-border-bottom-colors: none;
-     -moz-border-left-colors: none;
-     -moz-border-right-colors: none;
-     -moz-border-top-colors: none;
-     border-color: #CBCBCB #CBCBCB -moz-use-text-color;
-     border-image: none;
-     border-style: solid solid none;
-     border-width: 1px 1px medium;
-     color: #545454;
+	-moz-border-bottom-colors: none;
+	-moz-border-left-colors: none;
+	-moz-border-right-colors: none;
+	-moz-border-top-colors: none;
+	border-color: #CBCBCB #CBCBCB -moz-use-text-color;
+	border-image: none;
+	border-style: solid solid none;
+	border-width: 1px 1px medium;
+	color: #545454;
 }
 
 #nav a:hover {
-     -moz-border-bottom-colors: none;
-     -moz-border-left-colors: none;
-     -moz-border-right-colors: none;
-     -moz-border-top-colors: none;
-     border-color: #D5D5D5 #D5D5D5 -moz-use-text-color;
-     border-image: none;
-     border-style: solid solid none;
-     border-width: 1px 1px medium;
-     color: #545454;
+	-moz-border-bottom-colors: none;
+	-moz-border-left-colors: none;
+	-moz-border-right-colors: none;
+	-moz-border-top-colors: none;
+	border-color: #D5D5D5 #D5D5D5 -moz-use-text-color;
+	border-image: none;
+	border-style: solid solid none;
+	border-width: 1px 1px medium;
+	color: #545454;
 }
 
 #nav li {
-     float: left;
-     margin: 0px 1px 0px 0px;
+	float: left;
+	margin: 0px 1px 0px 0px;
 }
 
 #nav ul {
-     list-style-type: none;
-     margin: 0px 0px 0px 4px;
-     padding: 0px;
+	list-style-type: none;
+	margin: 0px 0px 0px 4px;
+	padding: 0px;
 }
 
 #player {
-     background: none repeat scroll 0% 0% #FFFFFF;
-     bottom: 0px;
-     height: 75px;
-     margin: 4px 0px 0px;
-     overflow: hidden;
-     position: absolute;
-     width: 100%;
+	background: none repeat scroll 0% 0% #FFFFFF;
+	bottom: 0px;
+	height: 75px;
+	margin: 4px 0px 0px;
+	overflow: hidden;
+	position: absolute;
+	width: 100%;
 }
 
 #SubsonicResults {
-     float: left;
-     height: 100%;
-     width: 75%;
+	float: left;
+	height: 100%;
+	width: 75%;
 }
 
 #search {
-     float: left;
-     margin: 6px 0px 0px;
+	float: left;
+	margin: 6px 0px 0px;
 }
 
 #settings .submit {
-     margin: 10px;
-     text-align: right;
+	margin: 10px;
+	text-align: right;
 }
 
 #songdetails {
-     float: left;
-     margin: 6px 0px;
-     padding: 0px;
-     text-align: left;
-     width: 70%;
+	display: inline-block;
+	margin: 6px 0px;
+	padding: 0px;
+	text-align: left;
 }
 
+
 #songdetails .jp-volume-bar {
-     background: none repeat scroll 0% 0% #CCCCCC;
-     cursor: pointer;
-     float: left;
-     height: 4px;
-     margin: 7px 4px 0px 0px;
-     overflow: hidden;
-     width: 46px;
+	background: none repeat scroll 0% 0% #CCCCCC;
+	cursor: pointer;
+	display: inline-block;
+	height: 4px;
+	margin: 7px 4px 6px 0px;
+	overflow: hidden;
+	width: 46px;
 }
 
 #songdetails .jp-volume-bar-value {
-     background-color: #5A5A5A;
-     height: 4px;
-     width: 0px;
+	background-color: #5A5A5A;
+	height: 4px;
+	width: 0px;
 }
 
 #songdetails a.favorite {
-     background: url("../images/star_yo_12x12.png") no-repeat scroll 0px center transparent;
-     display: block;
-     float: left;
-     height: 12px;
-     margin: 2px;
-     width: 12px;
+	background: url("../images/star_yo_12x12.png") no-repeat scroll 0px center transparent;
+	display: inline-block;
+	height: 12px;
+	margin: 2px;
+	width: 12px;
 }
 
 #songdetails a.first {
-     margin: 2px 2px 2px 0px;
+	margin: 2px 2px 2px 0px;
 }
 
 #songdetails a.lock {
-     background: url("../images/lock_stroke_gl_9x12.png") no-repeat scroll 0px center transparent;
-     display: block;
-     float: left;
-     height: 12px;
-     margin: 2px;
-     width: 9px;
+	background: url("../images/lock_stroke_gl_9x12.png") no-repeat scroll 0px center transparent;
+	display: inline-block;
+	height: 12px;
+	margin: 2px;
+	width: 9px;
 }
 
 #songdetails a.loop {
-     background: url("../images/loop_alt3_gd_12x9.png") no-repeat scroll 0px center transparent;
-     display: block;
-     float: left;
-     height: 9px;
-     margin: 4px 2px;
-     width: 12px;
+	background: url("../images/loop_alt3_gd_12x9.png") no-repeat scroll 0px center transparent;
+	display: inline-block;
+	height: 9px;
+	margin: 4px 2px;
+	width: 12px;
 }
 
 #songdetails a.mute {
-     background: url("../images/volume_mute_gd_12x9.png") no-repeat scroll 0px center transparent;
-     display: block;
-     float: left;
-     height: 12px;
-     margin: 2px;
-     width: 16px;
+	background: url("../images/volume_mute_gd_12x9.png") no-repeat scroll 0px center transparent;
+	display: inline-block;
+	height: 12px;
+	margin: 2px;
+	width: 16px;
 }
 
 #songdetails a.rate {
-     background: url("../images/star_lgo_12x12.png") no-repeat scroll 0px center #FFFFFF;
-     display: block;
-     float: left;
-     height: 12px;
-     margin: 2px;
-     width: 12px;
+	background: url("../images/star_lgo_12x12.png") no-repeat scroll 0px center #FFFFFF;
+	display: inline-block;
+	height: 12px;
+	margin: 2px;
+	width: 12px;
 }
 
 #songdetails a.rate:hover {
-     background: url("../images/star_lg_12x12.png") no-repeat scroll 0px center #FFFFFF;
+	background: url("../images/star_lg_12x12.png") no-repeat scroll 0px center #FFFFFF;
 }
 
 #songdetails a.shuffle {
-     background: url("../images/fork_gd_11x12.png") no-repeat scroll 0px center transparent;
-     display: block;
-     float: left;
-     height: 11px;
-     margin: 2px;
-     width: 12px;
+	background: url("../images/fork_gd_11x12.png") no-repeat scroll 0px center transparent;
+	display: inline-block;
+	height: 11px;
+	margin: 2px;
+	width: 12px;
 }
 
 #songdetails a.unmute {
-     background: url("../images/volume_mute_gl_12x9.png") no-repeat scroll 0px center transparent;
-     display: block;
-     float: left;
-     height: 12px;
-     margin: 2px;
-     width: 16px;
+	background: url("../images/volume_mute_gl_12x9.png") no-repeat scroll 0px center transparent;
+	display: inline-block;
+	height: 12px;
+	margin: 2px;
+	width: 16px;
 }
 
 #songdetails a.volume {
-     background: url("../images/volume_gd_12x9.png") no-repeat scroll 0px center transparent;
-     display: block;
-     float: left;
-     height: 12px;
-     margin: 2px;
-     width: 16px;
+	background: url("../images/volume_gd_12x9.png") no-repeat scroll 0px center transparent;
+	display: inline-block;
+	height: 12px;
+	margin: 2px;
+	width: 16px;
 }
 
-#songdetails > span {
-     display: block;
-}
-
-#songdetails .specs {
-     font-size: 10px;
-     line-height: 14px;
-     opacity: 0.6;
+.specs {
+	font-size: 10px;
+	line-height: 14px;
+	opacity: 0.6;
 }
 
 #songdetails.hover {
-     border: 1px solid #DCDCDC;
+	border: 1px solid #DCDCDC;
 }
 
 #sslogo {
-     background: url("../images/subsonic_36.png") no-repeat scroll 5px 3px transparent;
-     cursor: pointer;
-     height: 36px;
-     position: absolute;
-     right: 179px;
-     top: -1px;
-     width: 54px;
+	background: url("../images/subsonic_36.png") no-repeat scroll 5px 3px transparent;
+	cursor: pointer;
+	height: 36px;
+	position: absolute;
+	right: 179px;
+	top: -1px;
+	width: 54px;
 }
 
 #sslogo:hover {
-     background: url("../images/subsonic_dn_36.png") no-repeat scroll 5px 2px transparent;
+	background: url("../images/subsonic_dn_36.png") no-repeat scroll 5px 2px transparent;
 }
 
 #submenu_AZIndex {
-     background: none repeat scroll 0% 0% #F9F9F9;
-     border: 1px solid #C3C3C3;
-     display: none;
-     height: 100px;
-     position: fixed;
-     width: 200px;
-     z-index: 999;
+	background: none repeat scroll 0% 0% #F9F9F9;
+	border: 1px solid #C3C3C3;
+	display: none;
+	height: 100px;
+	position: fixed;
+	width: 200px;
+	z-index: 999;
 }
 
 #submenu_AZIndex a.close {
-     display: block;
-     font-size: 12px;
-     padding: 6px 16px;
+	display: block;
+	font-size: 12px;
+	padding: 6px 16px;
 }
 
 #submenu_AZIndex li {
-     float: left;
-     height: 18px;
-     padding: 0px 2px 5px;
+	float: left;
+	height: 18px;
+	padding: 0px 2px 5px;
 }
 
 #submenu_AZIndex li a {
-     color: #4B95E5;
-     cursor: pointer;
-     font-size: 24px;
-     padding: 0px 5px 0px 0px;
-     text-decoration: none;
+	color: #4B95E5;
+	cursor: pointer;
+	font-size: 24px;
+	padding: 0px 5px 0px 0px;
+	text-decoration: none;
 }
 
 #submenu_AZIndex ul {
-     list-style-type: none;
-     margin: 0px;
-     padding: 0px 0px 0px 10px;
+	list-style-type: none;
+	margin: 0px;
+	padding: 0px 0px 0px 10px;
 }
 
 #submenu_AddToPlaylist {
-     width: 100px;
+	width: 100px;
 }
 
 #submenu_AddToPlaylist a {
-     clear: both;
-     display: block;
-     float: left;
-     padding: 4px;
+	clear: both;
+	display: block;
+	float: left;
+	padding: 4px;
 }
 
 #submenu_Chat {
-     bottom: 59px;
-     left: 490px;
-     margin: 0px 0px 0px 1px;
-     position: absolute;
-     text-align: right;
-     width: 220px;
+	bottom: 59px;
+	left: 490px;
+	margin: 0px 0px 0px 1px;
+	position: absolute;
+	text-align: right;
+	width: 220px;
 }
 
 #submenu_CurrentPlaylist {
-     border: 1px solid #DCDCDC;
-     height: 200px;
-     overflow-x: hidden;
-     overflow-y: auto;
-     width: 400px;
+	border: 1px solid #DCDCDC;
+	height: 200px;
+	overflow-x: hidden;
+	overflow-y: auto;
+	width: 400px;
 }
 
 #submenu_NowPlaying {
-     bottom: 59px;
-     left: 605px;
-     margin: 0px 0px 0px 1px;
-     position: absolute;
-     text-align: right;
-     width: 220px;
+	bottom: 59px;
+	left: 605px;
+	margin: 0px 0px 0px 1px;
+	position: absolute;
+	text-align: right;
+	width: 220px;
 }
 
 #toploading {
-     background: url("../images/ajax-loader.gif") no-repeat scroll center center transparent;
-     display: none;
-     float: left;
-     height: 35px;
-     margin: 0px 0px 0px 2px;
-     width: 40px;
+	background: url("../images/ajax-loader.gif") no-repeat scroll center center transparent;
+	display: none;
+	float: left;
+	height: 35px;
+	margin: 0px 0px 0px 2px;
+	width: 40px;
 }
 
 #version {
-     font-size: 10px;
-     opacity: 0.8;
-     position: absolute;
-     right: 5px;
-     top: 5px;
+	font-size: 10px;
+	opacity: 0.8;
+	position: absolute;
+	right: 5px;
+	top: 5px;
 }
 
 #videodeck {
-     margin: 0px auto;
-     position: relative;
-     z-index: 1002;
+	margin: 0px auto;
+	position: relative;
+	z-index: 1002;
 }
 
 #welcome {
-     background: none repeat scroll 0% 0% rgba(0, 0, 0, 0.25);
-     border-radius: 2px;
-     border: 1px solid #A5A5A5;
-     display: none;
+	background: none repeat scroll 0% 0% rgba(0, 0, 0, 0.25);
+	border-radius: 2px;
+	border: 1px solid #A5A5A5;
+	display: none;
 }
 
 .AutoAlbumControls {
-     float: right;
+	float: right;
 }
 
 .accordion .accordionItemContents {
-     display: none;
-     margin: 5px 0px 0px;
+	display: none;
+	margin: 5px 0px 0px;
 }
 
 .accordion .accordionItemTitle {
-     background: none repeat scroll 0% 0% #FBFBFB;
-     border-bottom: 1px solid #CBCBCB;
-     cursor: pointer;
-     font-size: 14px;
-     padding: 12px;
+	background: none repeat scroll 0% 0% #FBFBFB;
+	border-bottom: 1px solid #CBCBCB;
+	cursor: pointer;
+	font-size: 14px;
+	padding: 12px;
 }
 
 .accordion .accordionItemTitle:hover {
-     background: none repeat scroll 0% 0% #FFFFFF;
+	background: none repeat scroll 0% 0% #FFFFFF;
 }
 
 .actions {
-     height: 30px;
-     margin: 6px 5px 0px 280px;
-     padding: 0px 0px 0px 5px;
+	height: 30px;
+	margin: 6px 5px 0px 280px;
+	padding: 0px 0px 0px 5px;
 }
 
 ul.albumist .album .albuminfo .title {
-     line-height: 18px;
-     padding: 5px 0px 0px;
+	line-height: 18px;
+	padding: 5px 0px 0px;
 }
 
 .aligncenter {
-     text-align: center;
+	text-align: center;
 }
 
 .alignleft {
-     text-align: left;
+	text-align: left;
 }
 
 .alignright {
-     text-align: right;
+	text-align: right;
 }
 
 .audiojs {
-     float: right;
-     margin-right: 5%;
-     margin-top: 6px;
-     width: 55%;
+	float: right;
+	margin-right: 5%;
+	margin-top: 6px;
+	width: 55%;
 }
 
 .audiojs .loaded {
-     background: none repeat scroll 0% 0% #000000;
-     height: 14px;
-     left: 0px;
-     position: absolute;
-     top: 0px;
-     width: 0px;
+	background: none repeat scroll 0% 0% #000000;
+	height: 14px;
+	left: 0px;
+	position: absolute;
+	top: 0px;
+	width: 0px;
 }
 
 .audiojs .progress {
-     background: none repeat scroll 0% 0% #CCCCCC;
-     height: 14px;
-     left: 0px;
-     position: absolute;
-     top: 0px;
-     width: 0px;
-     z-index: 1;
+	background: none repeat scroll 0% 0% #CCCCCC;
+	height: 14px;
+	left: 0px;
+	position: absolute;
+	top: 0px;
+	width: 0px;
+	z-index: 1;
+}
+.audiojs .scrubber:hover {
+	height: 10px;
 }
 
 .audiojs .scrubber {
-     background: none repeat scroll 0% 0% #5A5A5A;
-     border-bottom: 0px none;
-     border-left: 0px none;
-     border-top: 0px none;
-     cursor: pointer;
-     height: 4px;
-     margin: 6px 0px 0px;
-     overflow: hidden;
-     position: relative;
-     width: auto;
+	background: none repeat scroll 0% 0% #5A5A5A;
+	border-bottom: 0px none;
+	border-left: 0px none;
+	border-top: 0px none;
+	cursor: pointer;
+	height: 4px;
+	margin: 6px 0px 0px;
+	overflow: hidden;
+	position: relative;
+	width: auto;
 }
 
 .audiojs .time {
-     border: medium none;
-     float: left;
-     font-size: 11px;
-     height: 36px;
-     line-height: 17px;
-     margin: 0px 0px 0px 6px;
-     padding: 0px 5px 0px 0px;
-     text-shadow: none;
+	border: medium none;
+	float: left;
+	font-size: 11px;
+	height: 36px;
+	line-height: 17px;
+	margin: 0px 0px 0px 6px;
+	padding: 0px 5px 0px 0px;
+	text-shadow: none;
 }
 
 .audiojs .time em {
-     font-style: normal;
-     padding: 0px 2px 0px 0px;
+	font-style: normal;
+	padding: 0px 2px 0px 0px;
 }
 
 .beer {
-     font-size: 17px;
+	font-size: 17px;
 }
 
 .border {
-     border: 2px solid #D9D9D9;
+	border: 2px solid #D9D9D9;
 }
 
 .checkboxes {
-     margin: 10px 5px;
-     vertical-align: middle;
+	margin: 10px 5px;
+	vertical-align: middle;
 }
 
 .checkboxes label {
-     float: left;
-     margin: 5px 5px 0px;
+	float: left;
+	margin: 5px 5px 0px;
 }
 
 .clear {
-     clear: both;
+	clear: both;
 }
 
 .clearleft {
-     clear: left;
+	clear: left;
 }
 
 .clearright {
-     clear: right;
+	clear: right;
 }
 
 .codesyntax {
-     font-family: "Courier New";
+	font-family: "Courier New";
 }
 
 .darkoverlay {
-     background-color: #000000;
-     display: none;
-     height: 100%;
-     left: 0px;
-     opacity: 0.8;
-     position: absolute;
-     top: 0px;
-     width: 100%;
-     z-index: 1001;
+	background-color: #000000;
+	display: none;
+	height: 100%;
+	left: 0px;
+	opacity: 0.8;
+	position: absolute;
+	top: 0px;
+	width: 100%;
+	z-index: 1001;
 }
 
 .fillheight {
-     bottom: 0px;
-     left: 0px;
-     margin: 0px;
-     overflow-x: hidden;
-     overflow-y: scroll;
-     position: absolute;
-     top: 0px;
+	bottom: 0px;
+	left: 0px;
+	margin: 0px;
+	overflow-x: hidden;
+	overflow-y: scroll;
+	position: absolute;
+	top: 0px;
 }
 
 .floatleft, .checkboxes input, .checkboxes select, ul.albumlist .albuminfo {
-     float: left;
+	float: left;
 }
 
 .form {
-     background: none repeat scroll 0% 0% #FCFCFC;
-     border: 1px solid #F2F2F2;
-     float: left;
-     margin: 5px;
-     overflow: auto;
+	background: none repeat scroll 0% 0% #FCFCFC;
+	border: 1px solid #F2F2F2;
+	float: left;
+	margin: 5px;
+	overflow: auto;
 }
 
 .hide, .audiojs .play-pause, #preview {
-     display: none;
+	display: none;
 }
 
 .infolink {
-     float: right;
-     margin: 0px 5px 5px;
+	float: right;
+	margin: 0px 5px 5px;
 }
 
 .infolink a {
-     padding: 0px 4px;
+	padding: 0px 4px;
 }
 
 .inputwrap {
-     border: 1px solid #DCDCDC;
-     float: left;
-     padding: 3px;
+	border: 1px solid #DCDCDC;
+	float: left;
+	padding: 3px;
 }
 
 .italic, #NowPlayingList span.artist {
-     font-style: italic;
+	font-style: italic;
 }
 
 .albumlist.grid .itemactions {
-     margin-right: 5px;
+	margin-right: 5px;
 }
 
 .itemactions {
-     background: none repeat scroll 0% 0% #EEEEEE;
-     border-radius: 0px 0px 5px 5px;
-     float: right;
-     height: 35px;
+	background: none repeat scroll 0% 0% #EEEEEE;
+	border-radius: 0px 0px 5px 5px;
+	float: right;
+	height: 35px;
 }
 
 .itemactions a {
-     background-position: center center ! important;
-     background-repeat: no-repeat ! important;
-     float: left;
-     height: 100%;
-     width: 20px;
+	background-position: center center ! important;
+	background-repeat: no-repeat ! important;
+	float: left;
+	height: 100%;
+	width: 20px;
 }
 
 .itemactions a.add {
-     background: url("../images/plus_gl_8x8.png") repeat scroll 0% 0% transparent;
+	background: url("../images/plus_gl_8x8.png") repeat scroll 0% 0% transparent;
 }
 
 .itemactions a.add:hover {
-     background: url("../images/plus_8x8.png") repeat scroll 0% 0% transparent;
+	background: url("../images/plus_8x8.png") repeat scroll 0% 0% transparent;
 }
 
 .itemactions a.download {
-     background: url("../images/download_gl_9x12.png") repeat scroll 0% 0% transparent;
+	background: url("../images/download_gl_9x12.png") repeat scroll 0% 0% transparent;
 }
 
 .itemactions a.download:hover {
-     background: url("../images/download_gd_9x12.png") repeat scroll 0% 0% transparent;
+	background: url("../images/download_gd_9x12.png") repeat scroll 0% 0% transparent;
 }
 
 .itemactions a.favorite {
-     background: url("../images/star_yo_12x12.png") repeat scroll 0% 0% transparent;
+	background: url("../images/star_yo_12x12.png") repeat scroll 0% 0% transparent;
 }
 
 .itemactions a.info {
-     background: url("../images/info_gl_4x8.png") repeat scroll 0% 0% transparent;
+	background: url("../images/info_gl_4x8.png") repeat scroll 0% 0% transparent;
 }
 
 .itemactions a.play {
-     background: url("../images/play_gl_6x8.png") repeat scroll 0% 0% transparent;
+	background: url("../images/play_gl_6x8.png") repeat scroll 0% 0% transparent;
 }
 
 .itemactions a.play:hover {
-     background: url("../images/play_6x8.png") repeat scroll 0% 0% transparent;
+	background: url("../images/play_6x8.png") repeat scroll 0% 0% transparent;
 }
 
 .itemactions a.rate {
-     background: url("../images/star_lgo_12x12.png") repeat scroll 0% 0% transparent;
+	background: url("../images/star_lgo_12x12.png") repeat scroll 0% 0% transparent;
 }
 
 .itemactions a.rate:hover {
-     background: url("../images/star_lg_12x12.png") repeat scroll 0% 0% transparent;
+	background: url("../images/star_lg_12x12.png") repeat scroll 0% 0% transparent;
 }
 
 .itemactions a.remove {
-     background: url("../images/minus_gl_8x2.png") repeat scroll 0% 0% transparent;
+	background: url("../images/minus_gl_8x2.png") repeat scroll 0% 0% transparent;
 }
 
 .itemactions a.remove:hover {
-     background: url("../images/minus_8x2.png") repeat scroll 0% 0% transparent;
+	background: url("../images/minus_8x2.png") repeat scroll 0% 0% transparent;
 }
 
 .itemactions a:hover {
-     background-color: #DEECFB ! important;
+	background-color: #DEECFB ! important;
 }
 
 .lgsection {
-     border-bottom: 1px solid #CBCBCB;
-     border-top: 1px solid #CBCBCB;
-     bottom: 75px;
-     left: 0px;
-     overflow: auto;
-     position: absolute;
-     right: 175px;
-     top: 40px;
+	border-bottom: 1px solid #CBCBCB;
+	border-top: 1px solid #CBCBCB;
+	bottom: 75px;
+	left: 0px;
+	overflow: auto;
+	position: absolute;
+	right: 175px;
+	top: 40px;
 }
 
 .loading {
-     background: url("../images/ajax-loader.gif") no-repeat scroll center center #F4F4F4;
-     display: none;
-     height: 100%;
-     width: 100%;
+	background: url("../images/ajax-loader.gif") no-repeat scroll center center #F4F4F4;
+	display: none;
+	height: 100%;
+	width: 100%;
 }
 
 .on, .accordion .accordionOpenedContent {
-     display: block;
+	display: block;
 }
 
 .padder {
-     padding: 5px;
+	padding: 5px;
 }
 
 .padright {
-     padding: 0px 10px 0px 0px;
+	padding: 0px 10px 0px 0px;
 }
 
 .pager {
-     display: none;
-     float: right;
-     font-size: 12px;
-     padding: 0px 5px;
+	display: none;
+	float: right;
+	font-size: 12px;
+	padding: 0px 5px;
 }
 
 .pager a.next {
-     margin: 0px 0px 0px 5px;
+	margin: 0px 0px 0px 5px;
 }
 
 .pager a.previous {
-     margin: 0px 5px 0px 0px;
+	margin: 0px 5px 0px 0px;
 }
 
 .pagetabcenter {
-     background: url("../images/favicon_32x32.png") no-repeat scroll center center #F9F9F9;
-     border-bottom: 1px solid #C3C3C3;
-     border-left: 1px solid #C3C3C3;
-     border-top: 1px solid #C3C3C3;
-     bottom: 50%;
-     cursor: pointer;
-     height: 44px;
-     margin: 0px auto;
-     position: absolute;
-     right: 0px;
-     width: 66px;
-     z-index: 200;
+	background: url("../images/favicon_32x32.png") no-repeat scroll center center #F9F9F9;
+	border-bottom: 1px solid #C3C3C3;
+	border-left: 1px solid #C3C3C3;
+	border-top: 1px solid #C3C3C3;
+	bottom: 50%;
+	cursor: pointer;
+	height: 44px;
+	margin: 0px auto;
+	position: absolute;
+	right: 0px;
+	width: 66px;
+	z-index: 200;
 }
 
 .pagetabcenter:hover {
-     height: 45px;
-     opacity: 0.8;
+	height: 45px;
+	opacity: 0.8;
 }
 
 .playeractions {
-     margin-top: 10px;
-     text-align: center;
-     width: 30%;
-     min-width: 200px;
+	margin-top: 10px;
+	text-align: center;
+	width: 30%;
+	min-width: 200px;
 }
 
 .playeractionssmall {
-     float: right;
-     margin: 24px 8px 0px 14px;
-     width: 50px;
+	float: right;
+	margin: 24px 8px 0px 14px;
+	width: 50px;
 }
 
 .red {
-     color: #E64F4C;
+	color: #E64F4C;
 }
 
 .shadow {
-     box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.2);
+	box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.2);
 }
 
 .songpreview li {
-     border-bottom: 1px solid #F2F2F2;
-     font-size: 14px;
-     list-style-type: none;
-     padding: 8px;
+	border-bottom: 1px solid #F2F2F2;
+	font-size: 14px;
+	list-style-type: none;
+	padding: 8px;
 }
 
 .split-pane-divider {
-     background: none repeat scroll 0% 0% #AAAAAA;
-     width: 5px;
+	background: none repeat scroll 0% 0% #AAAAAA;
+	width: 5px;
 }
 
 .status {
-     background: none repeat scroll 0% 0% #F2F2F2;
-     border-left: 1px solid #CBCBCB;
-     border-top: 1px solid #CBCBCB;
-     bottom: 85px;
-     font-size: 12px;
-     opacity: 0.9;
-     overflow: hidden;
-     padding: 2px 10px;
-     position: absolute;
-     right: 0px;
-     text-align: center;
-     z-index: 99;
+	background: none repeat scroll 0% 0% #F2F2F2;
+	border-left: 1px solid #CBCBCB;
+	border-top: 1px solid #CBCBCB;
+	bottom: 85px;
+	font-size: 12px;
+	opacity: 0.9;
+	overflow: hidden;
+	padding: 2px 10px;
+	position: absolute;
+	right: 0px;
+	text-align: center;
+	z-index: 99;
 }
 
 .status a, .pager a {
-     color: #545454;
-     font-size: 12px;
-     text-decoration: none;
+	color: #545454;
+	font-size: 12px;
+	text-decoration: none;
 }
 
 .status a:hover, .pager a:hover, #AZIndex a:hover, #submenu_AZIndex li a:hover, .submenu a:hover {
-     text-decoration: underline;
+	text-decoration: underline;
 }
 
 .subactions {
-     float: right;
-     margin: 12px;
+	float: right;
+	margin: 12px;
 }
 
 .submenu {
-     background: none repeat scroll 0% 0% #FFFFFF;
-     margin: 2px 0px 0px 1px;
-     padding: 5px 10px;
-     position: fixed;
-     z-index: 999;
+	background: none repeat scroll 0% 0% #FFFFFF;
+	margin: 2px 0px 0px 1px;
+	padding: 5px 10px;
+	position: fixed;
+	z-index: 999;
 }
 
 .submenu a {
-     background: none repeat scroll 0% 0% transparent;
-     border: medium none;
-     color: #545454;
-     font-size: 12px;
-     padding: 0px;
-     text-decoration: none;
+	background: none repeat scroll 0% 0% transparent;
+	border: medium none;
+	color: #545454;
+	font-size: 12px;
+	padding: 0px;
+	text-decoration: none;
 }
 
 .submit {
-     margin: 0px 5px;
+	margin: 0px 5px;
 }
 
 .subsection {
-     margin: 10px 20px;
+	margin: 10px 20px;
 }
 
 .subsection a, #ChatMsgs span.msg {
-     font-size: 12px;
+	font-size: 12px;
 }
 
 .subsection small {
-     font-size: 10px;
-     margin: 0px 5px;
+	font-size: 10px;
+	margin: 0px 5px;
 }
 
 .tabcontent, select#SearchType {
-     margin: 0px;
+	margin: 0px;
 }
 
 .tag {
-     background-color: #EEF4FA;
-     border-radius: 2px;
-     display: inline-block;
-     padding: 2px 4px;
+	background-color: #EEF4FA;
+	border-radius: 2px;
+	display: inline-block;
+	padding: 2px 4px;
 }
 
 .ui-layout-center {
-     z-index: 100 ! important;
+	z-index: 100 ! important;
 }
 
 .ui-layout-pane {
-     outline: medium none;
+	outline: medium none;
 }
 
 .ui-layout-west {
-     z-index: 900 ! important;
+	z-index: 900 ! important;
 }
 
 button {
-     background: none repeat scroll 0px center transparent;
-     border-radius: 2px;
-     border: 1px solid #DCDCDC;
-     color: #6E6E6E;
-     cursor: pointer;
-     display: inline-block;
-     font: bold 12px Helvetica,Arial,sans-serif;
-     padding: 6px 12px;
-     position: relative;
-     text-decoration: none;
-     transition: border-color 0.218s ease 0s;
+	background: none repeat scroll 0px center transparent;
+	border-radius: 2px;
+	border: 1px solid #DCDCDC;
+	color: #6E6E6E;
+	cursor: pointer;
+	display: inline-block;
+	font: bold 12px Helvetica,Arial,sans-serif;
+	padding: 6px 12px;
+	position: relative;
+	text-decoration: none;
+	transition: border-color 0.218s ease 0s;
 }
 
 button img.pad {
-     margin: 1px 0px -1px;
+	margin: 1px 0px -1px;
 }
 
 button:active {
-     border-color: #444444;
-     color: #000000;
+	border-color: #444444;
+	color: #000000;
 }
 
 button:hover {
-     border-color: #999999;
-     box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.15);
-     color: #333333;
+	border-color: #999999;
+	box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.15);
+	color: #333333;
 }
 
 a.buttonvertical {
-     margin: 2px 0px;
+	margin: 2px 0px;
 }
 
 a.disabled {
-     background: none repeat scroll 0% 0% #F1F1F1;
-     color: #B7B7B7;
-     opacity: 0.6;
+	background: none repeat scroll 0% 0% #F1F1F1;
+	color: #B7B7B7;
+	opacity: 0.6;
 }
 
 a.disabled:hover {
-     border-color: #DCDCDC;
-     box-shadow: none;
-     color: #B7B7B7;
+	border-color: #DCDCDC;
+	box-shadow: none;
+	color: #B7B7B7;
 }
 
 a.selected {
-     border-color: #999999;
-     box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.15);
-     color: #333333;
+	border-color: #999999;
+	box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.15);
+	color: #333333;
 }
 
 a:hover {
-     background: none repeat scroll 0% 0% #DEECFB;
+	background: none repeat scroll 0% 0% #DEECFB;
 }
 
 body {
-     -moz-user-select: none;
-     background: none repeat scroll 0% 0% #FAFAFA;
-     color: #5B5B4E;
-     font: 100% Trebuchet MS,Arial,Helvetica,sans-serif;
-     text-align: center;
+	-moz-user-select: none;
+	background: none repeat scroll 0% 0% #FAFAFA;
+	color: #5B5B4E;
+	font: 100% Trebuchet MS,Arial,Helvetica,sans-serif;
+	text-align: center;
 }
 
 fieldset {
-     border: 1px solid #EEEEEE;
-     margin-bottom: 5px;
+	border: 1px solid #EEEEEE;
+	margin-bottom: 5px;
 }
 
 fieldset span {
-     display: block;
-     float: left;
-     font-size: 13px;
-     font-variant: small-caps;
-     font-weight: 700;
-     margin: 5px 0px;
+	display: block;
+	float: left;
+	font-size: 13px;
+	font-variant: small-caps;
+	font-weight: 700;
+	margin: 5px 0px;
 }
 
 h3.title {
-     font-size: 16px;
-     font-variant: small-caps;
-     font-weight: 400;
-     margin: 5px 0px;
-     padding: 0px;
+	font-size: 16px;
+	font-variant: small-caps;
+	font-weight: 400;
+	margin: 5px 0px;
+	padding: 0px;
 }
 
 html, body {
-     height: 100%;
-     margin: 0px;
-     padding: 0px;
-     width: 100%;
+	height: 100%;
+	margin: 0px;
+	padding: 0px;
+	width: 100%;
 }
 
 img {
-     background: none repeat scroll 0% 0% transparent;
-     border: medium none;
+	background: none repeat scroll 0% 0% transparent;
+	border: medium none;
 }
 
 input {
-     font-family: Calibri,Arial,Verdana;
-     font-size: 14px;
-     padding: 5px;
+	font-family: Calibri,Arial,Verdana;
+	font-size: 14px;
+	padding: 5px;
 }
 
 input#Search {
-     border: 1px solid #DCDCDC;
-     margin: 0px 0px 0px 5px;
-     width: 200px;
+	border: 1px solid #DCDCDC;
+	margin: 0px 0px 0px 5px;
+	width: 200px;
 }
 
 input.chat {
-     border: 1px solid #FFFFFF;
-     margin: 5px;
-     width: 150px;
+	border: 1px solid #FFFFFF;
+	margin: 5px;
+	width: 150px;
 }
 
 input.large {
-     border: 1px solid #DCDCDC;
-     margin: 5px;
-     width: 180px;
+	border: 1px solid #DCDCDC;
+	margin: 5px;
+	width: 180px;
 }
 
 input.m {
-     border: 1px solid #DCDCDC;
-     margin: 5px;
-     width: 80px;
+	border: 1px solid #DCDCDC;
+	margin: 5px;
+	width: 80px;
 }
 
 input.mlg {
-     border: 1px solid #DCDCDC;
-     margin: 5px;
-     width: 120px;
+	border: 1px solid #DCDCDC;
+	margin: 5px;
+	width: 120px;
 }
 
 input.sm {
-     border: 1px solid #DCDCDC;
-     margin: 5px;
-     width: 50px;
+	border: 1px solid #DCDCDC;
+	margin: 5px;
+	width: 50px;
 }
 
 input.xlarge {
-     border: 1px solid #DCDCDC;
-     margin: 5px;
-     width: 350px;
+	border: 1px solid #DCDCDC;
+	margin: 5px;
+	width: 350px;
 }
 
 label {
-     font-size: 12px;
-     font-weight: 700;
-     margin: 0px 5px;
+	font-size: 12px;
+	font-weight: 700;
+	margin: 0px 5px;
 }
 
 legend {
-     font-size: 14px;
-     font-variant: small-caps;
-     font-weight: 700;
+	font-size: 14px;
+	font-variant: small-caps;
+	font-weight: 700;
 }
 
 select {
-     border: 1px solid #D6D6D6;
-     font-family: Calibri,Arial,Verdana;
-     margin: 5px;
-     padding: 5px;
+	border: 1px solid #D6D6D6;
+	font-family: Calibri,Arial,Verdana;
+	margin: 5px;
+	padding: 5px;
 }
 
 select.folders {
-     margin: 5px;
-     width: 75%;
+	margin: 5px;
+	width: 75%;
 }
 
 select.large {
-     width: 192px;
+	width: 192px;
 }
 
 span.alert {
-     color: #6BA2D6;
-     font-size: 12px;
-     margin: 0px 0px 0px 10px;
+	color: #6BA2D6;
+	font-size: 12px;
+	margin: 0px 0px 0px 10px;
 }
 
 span.apiversion {
-     color: #000000;
-     font-size: 14px;
-     font-weight: 700;
+	color: #000000;
+	font-size: 14px;
+	font-weight: 700;
 }
 
 span.code {
-     font-family: "Courier New",Courier,mono;
-     font-size: 11px;
+	font-family: "Courier New",Courier,mono;
+	font-size: 11px;
 }
 
 ul li:nth-child(2n) {
-     background-color: #FFFFFF;
+	background-color: #FFFFFF;
 }
 
 ul li:nth-child(2n+1) {
-     background-color: #F4F4F4;
+	background-color: #F4F4F4;
 }
 
 ul.albumlist {
-     list-style-type: none;
-     padding: 0px;
+	list-style-type: none;
+	padding: 0px;
 }
 
 ul.albumlist a {
-     color: #7EA8D5;
-     font-size: 11px;
-     overflow: hidden;
-     text-decoration: none;
+	color: #7EA8D5;
+	font-size: 11px;
+	overflow: hidden;
+	text-decoration: none;
 }
 
 ul.albumlist li {
-     cursor: pointer;
-     margin: 0px;
-     overflow: hidden;
-     padding: 0px;
+	cursor: pointer;
+	margin: 0px;
+	overflow: hidden;
+	padding: 0px;
 }
 
 ul.albumlist.grid li {
-     box-shadow: 0px -2px 10px rgba(0, 0, 0, 0.25);
-     display: inline-block;
-     height: 260px;
-     margin: 5px;
-     width: 170px;
+	box-shadow: 0px -2px 10px rgba(0, 0, 0, 0.25);
+	display: inline-block;
+	height: 260px;
+	margin: 5px;
+	width: 170px;
 }
 
 ul.albumlist.grid li img {
-     display: block;
-     height: 160px;
-     margin: 5px auto 0px;
-     width: 160px;
+	display: block;
+	height: 160px;
+	margin: 5px auto 0px;
+	width: 160px;
 }
 
 ul.albumlist.grid li .albuminfo {
-     margin: 0px 5px;
+	margin: 0px 5px;
 }
 
 ul.albumlist.grid li .albuminfo .title h4 {
-     font-size: 8pt;
-     margin: 0px;
+	font-size: 8pt;
+	margin: 0px;
 }
 
 ul.albumlist.list li img {
-     border: 1px solid #DEDEDE;
-     float: left;
-     height: 50px;
-     margin: 3px 10px;
-     padding: 2px;
-     width: 50px;
+	border: 1px solid #DEDEDE;
+	float: left;
+	height: 50px;
+	margin: 3px 10px;
+	padding: 2px;
+	width: 50px;
 }
 
 ul.albumlist.list li > img {
-     height: auto;
-     max-width: 100%;
+	height: auto;
+	max-width: 100%;
 }
 
 ul.albumlist.list .albuminfo {
-     float: left;
+	float: left;
 }
 
 ul.albumlist.list li.album {
-     background-image: none;
-     border-bottom: 1px solid #EFEFEF;
-     cursor: pointer;
-     padding: 4px;
+	background-image: none;
+	border-bottom: 1px solid #EFEFEF;
+	cursor: pointer;
+	padding: 4px;
 }
 
 ul.preferences {
-     list-style-type: none;
-     margin: 0px 5px;
-     padding: 0px;
+	list-style-type: none;
+	margin: 0px 5px;
+	padding: 0px;
 }
 
 ul.preferences li {
-     font-size: 11px;
-     padding: 8px 0px;
+	font-size: 11px;
+	padding: 8px 0px;
 }
 
 ul.preferences li em {
-     background: none repeat scroll 0px 0px #D3D3D3;
-     border-radius: 4px;
-     box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
-     font-style: normal;
-     left: -3px;
-     margin: 0px 0px 0px 5px;
-     padding: 3px 9px;
-     position: relative;
+	background: none repeat scroll 0px 0px #D3D3D3;
+	border-radius: 4px;
+	box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+	font-style: normal;
+	left: -3px;
+	margin: 0px 0px 0px 5px;
+	padding: 3px 9px;
+	position: relative;
 }
 
 ul.preferences li span.version {
-     display: block;
-     font-size: 11px;
-     font-weight: 700;
-     padding: 0px;
+	display: block;
+	font-size: 11px;
+	font-weight: 700;
+	padding: 0px;
 }
 
 ul.preferences li.log {
-     padding: 2px 0px;
+	padding: 2px 0px;
 }
 
 ul.preferences li.log span.changes {
-     display: block;
-     font-size: 11px;
-     padding: 0px 0px 0px 5px;
+	display: block;
+	font-size: 11px;
+	padding: 0px 0px 0px 5px;
 }
 
 ul.preferences li.title {
-     font-size: 14px;
-     font-variant: small-caps;
-     font-weight: 700;
-     padding: 0px;
+	font-size: 14px;
+	font-variant: small-caps;
+	font-weight: 700;
+	padding: 0px;
 }
 
 ul.simplelist {
-     list-style-type: none;
-     margin: 0px;
-     padding: 0px;
+	list-style-type: none;
+	margin: 0px;
+	padding: 0px;
 }
 
 ul.simplelist li {
-     border-bottom: 1px solid #F2F2F2;
-     cursor: pointer;
-     font-size: 13px;
-     padding: 8px;
+	border-bottom: 1px solid #F2F2F2;
+	cursor: pointer;
+	font-size: 13px;
+	padding: 8px;
 }
 
 ul.simplelist li a {
-     color: #545454;
-     text-decoration: none;
+	color: #545454;
+	text-decoration: none;
 }
 
 ul.simplelist li.index {
-     background: none repeat scroll 0% 0% #F0F0F0;
-     border-bottom: 1px solid #DDDDDD;
-     color: #A7A7A7;
-     font-size: 11px;
-     font-weight: 700;
-     margin: 2px 0px;
-     padding: 1px 4px;
+	background: none repeat scroll 0% 0% #F0F0F0;
+	border-bottom: 1px solid #DDDDDD;
+	color: #A7A7A7;
+	font-size: 11px;
+	font-weight: 700;
+	margin: 2px 0px;
+	padding: 1px 4px;
 }
 
 ul.simplelist li.index a {
-     color: #A7A7A7;
+	color: #A7A7A7;
 }
 
 ul.simplelist li:hover {
-     background-color: #EEF4FA;
+	background-color: #EEF4FA;
 }
 
 ul.songlist {
-     list-style-type: none;
+	list-style-type: none;
 }
 
 ul.songlist .row {
-     border-radius: 5px;
-     border: 1px solid #EFEFEF;
-     clear: both;
-     cursor: pointer;
-     height: 30px;
-     line-height: 30px;
-     margin-bottom: 2px;
-     overflow: hidden;
+	border-radius: 5px;
+	border: 1px solid #EFEFEF;
+	clear: both;
+	cursor: pointer;
+	height: 30px;
+	line-height: 30px;
+	margin-bottom: 2px;
+	overflow: hidden;
 }
 
 ul.songlist .row .artist {
-     width: 30%;
+	width: 30%;
 }
 
 ul.songlist .row .time {
-     float: right;
-     margin-right: 17px;
+	float: right;
+	margin-right: 17px;
 }
 
 ul.songlist .row .title {
-     display: inline-block;
-     overflow-x: hidden;
-     width: 50%;
+	display: inline-block;
+	overflow-x: hidden;
+	width: 50%;
 }
 
 ul.songlist .row .artist {
-     display: inline-block;
-     overflow-x: hidden;
-     width: 40%;
+	display: inline-block;
+	overflow-x: hidden;
+	width: 40%;
 }
 
 ul.songlist .row .track {
-     background: none repeat scroll 0px 0px #EEEEEE;
-     float: left;
-     height: 100%;
-     line-height: 30px;
-     margin-right: 10px;
-     padding: 0px 10px 0px 20px;
-     text-align: right;
-     white-space: nowrap;
-     width: 3%;
+	background: none repeat scroll 0px 0px #EEEEEE;
+	float: left;
+	height: 100%;
+	line-height: 30px;
+	margin-right: 10px;
+	padding: 0px 10px 0px 20px;
+	text-align: right;
+	white-space: nowrap;
+	width: 3%;
 }
 
 ul.songlist .row a {
-     color: #7EA8D5;
-     display: inline-block;
-     font-size: 12px;
+	color: #7EA8D5;
+	display: inline-block;
+	font-size: 12px;
 }
 
 ul.songlist .row span.albumblock {
-     color: #7EA8D5;
-     font-size: 12px;
+	color: #7EA8D5;
+	font-size: 12px;
 }
 
 ul.songlist li.playing {
-     background-image: url("../images/play_alt_gd_16x16.png");
-     background-position: 6px center;
-     background-repeat: no-repeat;
+	background-image: url("../images/play_alt_gd_16x16.png");
+	background-position: 6px center;
+	background-repeat: no-repeat;
 }
 
 ul.songlist li:hover, .albumlist li:hover {
-     background-color: #EEF4FA;
+	background-color: #EEF4FA;
 }
 
 .setting {
-     margin: 0px 0px 5px;
+	margin: 0px 0px 5px;
 }
 
 #player #playerleft {
-     float: left;
-     width: 40%;
+	float: left;
+	width: 40%;
 }
 
 #songResults {
-     background: none repeat scroll 0px 0px #FFFFFF;
-     bottom: 0px;
-     height: 30%;
-     overflow-y: auto;
-     padding: 0px 1%;
-     position: absolute;
-     right: 0px;
-     width: 73%;
+	background: none repeat scroll 0px 0px #FFFFFF;
+	bottom: 0px;
+	height: 30%;
+	overflow-y: auto;
+	padding: 0px 1%;
+	position: absolute;
+	right: 0px;
+	width: 73%;
 }
 
 li.selected {
-     background-color: #D4E2F1 ! important;
+	background-color: #D4E2F1 ! important;
 }
 
 ul.mainlist li.selected {
-     background-color: #528AC6;
-     color: #F2F2F2;
+	background-color: #528AC6;
+	color: #F2F2F2;
 }
 
 ul.artistlist li {
-     padding: 0px;
+	padding: 0px;
 }
 
 ul.artistlist li a {
-     display: block;
-     height: 100%;
-     padding: 5px;
-     width: 100%;
+	display: block;
+	height: 100%;
+	padding: 5px;
+	width: 100%;
 }
 
 .artistlist {
-     overflow: hidden;
+	overflow: hidden;
 }
 
+.coverartfancy {
+	width: 60px;
+	display: block;
+	float: left;
+}
+
+.coverartfancy img {
+	display: block;
+	max-width: 100%;
+	height: auto;
+}

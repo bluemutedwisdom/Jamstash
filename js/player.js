@@ -73,51 +73,33 @@
 
 			timerid = $window.setInterval(function () {
 				saveTrackPosition();
-			}, 30000);
+			}, 3000);
 		}
 	}
 
 	saveTrackPosition = function () {
+		if ($rootScope.playingSong) {
+				$('#action_SaveProgress').fadeTo("slow", 0).delay(500).fadeTo("slow", 1).delay(500).fadeTo("slow", 0).delay(500).fadeTo("slow", 1);
 
-		var audio = $(player1).data("jPlayer");
-		if (typeof audio != 'undefined') {
+				// Save Queue
+				try {
+					utils.setValue('CurrentSong', $rootScope.playingSong)
+					$log.debug('Saving Current Position: ' + angular.toJson(song));
 
-			if (audio.status.currentTime > 0 && audio.status.paused == false) {
-				var song;
+					utils.setValue('CurrentQueue', $rootScope.queue)
+					$log.debug('Saving Queue: ' + $rootScope.queue.length + ' Songs');
 
-				angular.forEach($rootScope.queue, function(item, key) {
-					if (item.playing === true) {
-						song = item;
-					}
-				});
-
-				if (song) {
-					var position = audio.status.currentTime;
-					if (position != null) {
-						$('#action_SaveProgress').fadeTo("slow", 0).delay(500).fadeTo("slow", 1).delay(500).fadeTo("slow", 0).delay(500).fadeTo("slow", 1);
-						song.position = position;
-						// Save Queue
-						try {
-							utils.setValue('CurrentSong', song)
-							$log.debug('Saving Current Position: ' + angular.toJson(song));
-
-							utils.setValue('CurrentQueue', $rootScope.queue)
-							$log.debug('Saving Queue: ' + $rootScope.queue.length + ' Songs');
-
-						} catch (e) {
-							localStorage.clear()
-							throw e;
-							// almost certainly quota exceeded
-						}
-					}
+				} catch (e) {
+					localStorage.clear()
+					throw e;
+					// almost certainly quota exceeded
 				}
-			}
 		}
 	}
 
 	deleteCurrentQueue = function (data) {
 
-		util.setValue('CurrentQueue', null, false);
+		utils.setValue('CurrentQueue', null, false);
 		utils.setValue('CurrentSong', null, false);
 
 		$log.debug('Removing Play Queue');
@@ -279,8 +261,6 @@
 			error: function(event) {
 
 				var time = $(player1).data("jPlayer").status.currentTime;
-
-				$(player1).jPlayer("play", time);
 
 				$log.debug("Error Type: " + event.jPlayer.error.type);
 				$log.debug("Error Context: " + event.jPlayer.error.context);

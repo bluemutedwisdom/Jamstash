@@ -22,25 +22,6 @@ function AppCtrl($scope, $rootScope, $document, $location, utils, globals, model
     }
 
     /*
-     * Utility function to show lightbox on doubleclick of album art in Queue
-     */
-    $(".coverartfancy").on("dblclick", "img", function () {
-        $("a.coverartfancy").fancybox({
-            beforeShow: function () {
-                //this.title = $('#songdetails_artist').html();
-            },
-            afterLoad: function () {
-                //this.inner.prepend( '<h1>1. My custom title</h1>' );
-                //this.content = '<h1>2. My custom title</h1>';
-            },
-            hideOnContentClick: true,
-            type: 'image',
-            openEffect: 'none',
-            closeEffect: 'none'
-        });
-    });
-
-    /*
      * Unknown Function
      */
     var submenu_active = false;

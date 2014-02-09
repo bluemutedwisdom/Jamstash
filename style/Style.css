@@ -1559,3 +1559,34 @@ ul.artistlist li a {
 	max-width: 100%;
 	height: auto;
 }
+
+ul.albumlist li.album.playing {
+	-moz-animation: playglow .6s ease-in-out infinite;
+	-webkit-animation: playglow 1.6s ease-in-out infinite;
+	animation: playglow .6s ease-in-out infinite;
+}
+
+ul.albumlist li.album.playing .play {
+	background-color: rgba(0,250,0,0.1);
+}
+
+@-webkit-keyframes playglow
+{
+	0% {box-shadow: 0;}
+	50% {box-shadow: 0px 0px 30px rgba(116, 24, 107, 1);}
+	100% {box-shadow: 0;}
+}
+
+@-moz-keyframes playglow
+{
+	0% {box-shadow: 0;}
+	100% {box-shadow: 0px -2px 30px rgba(0, 100, 0, 0.6);}
+	0% {box-shadow: 0;}
+}
+
+@keyframes playglow
+{
+	0% {box-shadow: 0;}
+	100% {box-shadow: 0px -2px 30px rgba(0, 100, 0, 0.6);}
+	0% {box-shadow: 0;}
+}

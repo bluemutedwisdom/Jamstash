@@ -16,11 +16,11 @@
 		<span class="album" ng-bind="playingSong.album"></span>
 
 		<div id="songdetails_controls">
-			<a href="" id="action_Mute" class="mute first" title="Mute"></a>
-			<a href="" id="action_UnMute" class="unmute first" title="Unmute" style="display: none;"></a>
+			<a id="action_Mute" class="mute first" title="Mute"></a>
+			<a id="action_UnMute" class="unmute first" title="Unmute" style="display: none;"></a>
 			<div class="jp-volume-bar"><div class="jp-volume-bar-value"></div></div><a href="" id="action_VolumeMax" class="volume" title="Max Volume"></a>
-			<a href="" class="loop" title="Repeat" ng-click="toggleSetting('Repeat')" ng-class="{'hoverSelected': !settings.Repeat }"></a>
-			<a href="" id="action_SaveProgress" class="lock" title="Save Track Position: On" ng-show="settings.SaveTrackPosition"></a>
+			<a class="loop" title="Repeat" ng-click="toggleSetting('Repeat')" ng-class="{'hoverSelected': !settings.settings.Repeat }"></a>
+			<a id="action_SaveProgress" class="lock" title="Save Track Position: On" ng-show="settings.settings.SaveTrackPosition"></a>
 			<a title="Favorite" href="" ng-class="{'favorite': playingSong.starred, 'rate': !playingSong.starred}" ng-click="updateFavorite(playingSong)" stop-event="click"></a>
 		</div>
 	</div>

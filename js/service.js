@@ -146,6 +146,12 @@ JamStash.directive('scrollIf', function(){
 					var list = $('#AlbumsList')
 					var child = $(element);
 
+					list.bind('scroll mousedown wheel DOMMouseScroll mousewheel keyup', function(e){
+						if ( e.which > 0 || e.type == "mousedown" || e.type == "mousewheel"){
+							list.stop();
+						}
+					})
+
 					list.animate({scrollTop: list.scrollTop() + (child.position().top - list.position().top) - (list.height()/2) + (child.height()/2)}, 1000)
 				}
 		})

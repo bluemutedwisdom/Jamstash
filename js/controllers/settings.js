@@ -1,6 +1,6 @@
 ﻿JamStash.controller('SettingsCtrl', function SettingsCtrl($scope, utils, globals, json, notifications, $log) {
 
-	$scope.settings = globals.settings;
+	$scope.settings = {};
 
 	$scope.Timeouts = [
 		{ id: 10000, name: 10 },
@@ -29,27 +29,27 @@
 	$scope.save = function () {
 		if ($scope.settings.Password != '' && globals.settings.Password.substring(0, 4) != 'enc:') { $scope.settings.Password = 'enc:' + utils.HexEncode($scope.settings.Password); }
 
-		if (globals.settings.NotificationSong) {
+		if ($scope.settings.NotificationSong) {
 			notifications.requestPermissionIfRequired();
 			if (!notifications.hasNotificationPermission()) {
 				alert('HTML5 Notifications are not available for your current browser, Sorry :(');
 			}
 		}
 
-		if (globals.settings.NotificationNowPlaying) {
+		if ($scope.settings.NotificationNowPlaying) {
 			notifications.requestPermissionIfRequired();
 			if (!notifications.hasNotificationPermission()) {
 				alert('HTML5 Notifications are not available for your current browser, Sorry :(');
 			}
 		}
 
-		if (globals.settings.Theme) {
-			utils.switchTheme(globals.settings.Theme);
+		if ($scope.settings.Theme) {
+			utils.switchTheme($scope.settings.Theme);
 		}
 
 		$log.debug('Settings Updated to: ' + JSON.stringify($scope.settings, null, 2))
 
-		localStorage.setItem('Settings', angular.toJson($scope.settings))
+		utils.setValue('Settings', $scope.settings)
 
 		globals.settings = $scope.settings
 

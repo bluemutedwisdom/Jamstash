@@ -13,8 +13,7 @@
 	 */
 	$scope.album = [];
 
-	$scope.settings = globals.settings;
-	$scope.Server = globals.settings.Server;
+	$scope.settings = globals;
 
 	$scope.AutoAlbums = [
 		{ id: "starred", name: "Starred" },
@@ -36,7 +35,7 @@
 	$scope.AlbumDisplay = globals.Layouts;
 	$scope.SelectedAlbumDisplay = $scope.AlbumDisplay[0];
 
-	$scope.SearchType = globals.settings.DefaultSearchType;
+	$scope.SearchType = $scope.settings.DefaultSearchType;
 	$scope.SearchTypes = globals.SearchTypes;
 
 	$scope.MusicFolders = [];

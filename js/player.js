@@ -1,5 +1,7 @@
 ﻿JamStash.controller('PlayerCtrl', function ($rootScope, $scope, $window, utils, globals, model, notifications, $http, $log) {
 
+	$scope.settings = globals;
+
 	/* for Swift.fm */
 	$rootScope.unity;
 
@@ -38,7 +40,7 @@
 
 		var song;
 
-		if (globals.settings.Debug) { console.log('Getting Next Song > ' + 'Queue length: ' + $rootScope.queue.length); }
+		$log.debug('Getting Next Song > ' + 'Queue length: ' + $rootScope.queue.length);
 
 		if ($rootScope.queue.length > 0) {
 			angular.forEach($rootScope.queue, function(item, key) {
@@ -54,7 +56,7 @@
 				next = $rootScope.queue[index + 1];
 			}
 			if (typeof next != 'undefined') {
-				if (globals.settings.Debug) { console.log('Next Song: ' + next.id); }
+				$log.debug('Next Song: ' + next.id);
 				return next;
 			} else {
 				return false;
@@ -65,16 +67,15 @@
 	}
 
 	startSaveTrackPosition = function () {
-		if (globals.settings.SaveTrackPosition) {
 
 			if (timerid != 0) {
 				clearInterval(timerid);
 			}
 
 			timerid = $window.setInterval(function () {
-				saveTrackPosition();
+				if ($scope.settings.settings.SaveTrackPosition)
+					saveTrackPosition();
 			}, 3000);
-		}
 	}
 
 	saveTrackPosition = function () {
@@ -82,18 +83,12 @@
 				$('#action_SaveProgress').fadeTo("slow", 0).delay(500).fadeTo("slow", 1).delay(500).fadeTo("slow", 0).delay(500).fadeTo("slow", 1);
 
 				// Save Queue
-				try {
-					utils.setValue('CurrentSong', $rootScope.playingSong)
-					$log.debug('Saving Current Position: ' + angular.toJson(song));
+				utils.setValue('CurrentSong', $rootScope.playingSong)
+				$log.debug('Saving Current Position: ' + angular.toJson($rootScope.playingSong));
 
-					utils.setValue('CurrentQueue', $rootScope.queue)
-					$log.debug('Saving Queue: ' + $rootScope.queue.length + ' Songs');
+				utils.setValue('CurrentQueue', $rootScope.queue)
+				$log.debug('Saving Queue: ' + $rootScope.queue.length + ' Songs');
 
-				} catch (e) {
-					localStorage.clear()
-					throw e;
-					// almost certainly quota exceeded
-				}
 		}
 	}
 

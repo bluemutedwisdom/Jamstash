@@ -8,7 +8,7 @@ JamStash.service('utils', function (globals, model, $rootScope, $log, notificati
 
 	this.setValue = function (key, value, notify) {
 
-		if($rootScope.db !== undefined)
+		if($rootScope.db != undefined)
 		{
 			if(value === null)
 			{
@@ -17,7 +17,7 @@ JamStash.service('utils', function (globals, model, $rootScope, $log, notificati
 			}
 
 			$rootScope.db.setItem(key, angular.toJson(value), function(){
-				$log.debug('set ' + key + ' to ' + value)
+				$log.debug('set ' + key + ' to ' + angular.toJson(value))
 			})
 
 			return
@@ -60,26 +60,6 @@ JamStash.service('utils', function (globals, model, $rootScope, $log, notificati
 		})
 	}
 
-	/*
-	 * Reads and sets globals.settings values
-	 */
-	this.loadSettings = function () {
-
-		var s = localStorage.getItem('Settings')
-		if(s !== null)
-			globals.settings = angular.fromJson(s)
-
-		var s = localStorage.getItem('Volume')
-		if(s !== null)
-			$rootScope.volume  = angular.fromJson(s)
-		/*
-		 *if (this.getValue("SavedCollections")) { globals.SavedCollections = utils.getValue("SavedCollections").split(","); }
-		 *if (this.getValue("SavedGenres")) { globals.SavedGenres = utils.getValue("SavedGenres").split(","); }
-		 */
-
-		$log.debug('Settings: ' + JSON.stringify(globals.settings, null, 2));
-	}
-
 	this.loadTrackPosition = function () {
 		// Load Saved Song
 		this.getValue('CurrentSong', function(song){
@@ -88,7 +68,7 @@ JamStash.service('utils', function (globals, model, $rootScope, $log, notificati
 				$rootScope.playSong(true, song);
 			}
 		})
-				// Load Saved Queue
+		// Load Saved Queue
 		this.getValue('CurrentQueue', function(items){
 			if (items) {
 				$rootScope.queue = items;
@@ -290,10 +270,10 @@ JamStash.service('utils', function (globals, model, $rootScope, $log, notificati
 		},
 		un: function (str) {
 			if(str != undefined)
-			return str.replace(/&#(x)?([^;]{1,5});?/g,
-					   function (a, b, c) {
-						   return String.fromCharCode(parseInt(c, b ? 16 : 10))
-					   })
+				return str.replace(/&#(x)?([^;]{1,5});?/g,
+						   function (a, b, c) {
+							   return String.fromCharCode(parseInt(c, b ? 16 : 10))
+						   })
 		}
 	};
 

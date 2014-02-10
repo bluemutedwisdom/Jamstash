@@ -1,0 +1,133 @@
+#AlbumsList {
+	height: 70%;
+	margin-left: 15px;
+	overflow-y: auto;
+}
+
+ul.albumlist {
+	list-style-type: none;
+	padding: 0px;
+}
+
+ul.albumlist > div {
+	display: inline-block;
+}
+
+ul.albumlist h2 {
+	clear: both;
+}
+
+ul.albumlist li {
+	cursor: pointer;
+	margin: 0px;
+	overflow: hidden;
+	padding: 0px;
+}
+
+ul.albumlist li a {
+	color: #7EA8D5;
+	font-size: 11px;
+	overflow: hidden;
+	text-decoration: none;
+}
+
+ul.albumist .album .albuminfo .title {
+	line-height: 18px;
+	padding: 5px 0px 0px;
+}
+
+/*
+ * Album Results Listing (Grid Format)
+ */
+ul.albumlist.grid li {
+	box-shadow: 0px -2px 10px rgba(0, 0, 0, 0.25);
+	display: inline-block;
+	height: 260px;
+	margin: 5px;
+	width: 170px;
+}
+
+ul.albumlist.grid li img {
+	display: block;
+	height: 160px;
+	margin: 5px auto 0px;
+	width: 160px;
+}
+
+ul.albumlist.grid .album .year {
+	display: inline-block;
+	padding: 7px 0px 0px 15px;
+}
+
+ul.albumlist.grid .albuminfo .artist {
+	font-size: 12px;
+}
+
+ul.albumlist.grid .itemactions {
+	margin-right: 5px;
+}
+
+
+ul.albumlist.grid li .albuminfo {
+	margin: 0px 5px;
+}
+
+ul.albumlist.grid li .albuminfo .title h4 {
+	font-size: 8pt;
+	margin: 0px;
+}
+
+/*
+ * Album Results Listing (List Format)
+ */
+ul.albumlist.list li.album {
+	background-image: none;
+	border-bottom: 1px solid #EFEFEF;
+	cursor: pointer;
+	padding: 4px;
+}
+
+ul.albumlist.list li.album img {
+	border: 1px solid #DEDEDE;
+	float: left;
+	height: 50px;
+	margin: 3px 10px;
+	padding: 2px;
+	width: 50px;
+	height: auto;
+	max-width: 100%;
+}
+
+/*
+ * Glow effect for playing album
+ */
+ul.albumlist li.album.playing {
+	-moz-animation: playglow 1.6s ease-in-out infinite;
+	-webkit-animation: playglow 1.6s ease-in-out infinite;
+	animation: playglow 1.6s ease-in-out infinite;
+}
+
+ul.albumlist li.album.playing .play {
+	background-color: rgba(0,250,0,0.1);
+}
+
+@-webkit-keyframes playglow
+{
+	0% {box-shadow: 0;}
+	50% {box-shadow: 0px 0px 30px rgba(116, 24, 107, 1);}
+	100% {box-shadow: 0;}
+}
+
+@-moz-keyframes playglow
+{
+	0% {box-shadow: 0;}
+	50% {box-shadow: 0px 0px 30px rgba(116, 24, 107, 1);}
+	100% {box-shadow: 0;}
+}
+
+@keyframes playglow
+{
+	0% {box-shadow: 0;}
+	50% {box-shadow: 0px 0px 30px rgba(116, 24, 107, 1);}
+	100% {box-shadow: 0;}
+}

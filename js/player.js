@@ -75,19 +75,21 @@
 			timerid = $window.setInterval(function () {
 				if ($scope.settings.settings.SaveTrackPosition)
 					saveTrackPosition();
-			}, 3000);
+			}, 5000);
 	}
 
 	saveTrackPosition = function () {
-		if ($rootScope.playingSong) {
+		if ($rootScope.playingSong  && $scope.jPlayer.data("jPlayer") != undefined) {
 				$('#action_SaveProgress').fadeTo("slow", 0).delay(500).fadeTo("slow", 1).delay(500).fadeTo("slow", 0).delay(500).fadeTo("slow", 1);
 
-				// Save Queue
-				utils.setValue('CurrentSong', $rootScope.playingSong)
-				$log.debug('Saving Current Position: ' + angular.toJson($rootScope.playingSong));
 
+				$rootScope.playingSong.position = $scope.jPlayer.data("jPlayer").status.currentTime;
+				utils.setValue('CurrentSong', $rootScope.playingSong)
+				//$log.debug('Saving Current Position: ' + angular.toJson($rootScope.playingSong));
+
+				// Save Queue
 				utils.setValue('CurrentQueue', $rootScope.queue)
-				$log.debug('Saving Queue: ' + $rootScope.queue.length + ' Songs');
+				//$log.debug('Saving Queue: ' + $rootScope.queue.length + ' Songs');
 
 		}
 	}
@@ -208,6 +210,7 @@
 				}
 
 				if (loadonly) {
+					$log.debug("loading song to position: " + position)
 					$(this).jPlayer("pause", position);
 				} else {
 					$(this).jPlayer("play");
@@ -263,6 +266,8 @@
 				$log.debug("Stream interrupted, retrying from position: " + time);
 			}
 		});
+
+		return $(el);
 	}
 
 	$rootScope.playPauseSong = function(){

@@ -7,8 +7,8 @@
 		<button id="NextTrack" title="Next Track" ng-click="nextTrack()"><img src="images/last_24x24.png" /></button>
 	</div>
 
-	<a class="coverartfancy" rel="coverart" fancybox="{{playingSong.coverartfull}}" title="{{playingSong.artist}} - {{playingSong.album}}" href>
-		<img ng-src="{{playingSong.coverartfull}}" src="images/albumdefault_60.jpg" alt="" />
+	<a class="coverartfancy" rel="coverart" href="{{playingSong.coverartfull}}" title="{{playingSong.artist}} - {{playingSong.album}}" fancybox>
+		<img ng-src="{{playingSong.coverartthumb}}" src="images/albumdefault_60.jpg" alt="Cover Artwork" />
 	</a>
 
 	<div id="songdetails">

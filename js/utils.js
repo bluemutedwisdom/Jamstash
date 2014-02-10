@@ -17,7 +17,7 @@ JamStash.service('utils', function (globals, model, $rootScope, $log, notificati
 			}
 
 			$rootScope.db.setItem(key, angular.toJson(value), function(){
-				$log.debug('set ' + key + ' to ' + angular.toJson(value))
+				return
 			})
 
 			return

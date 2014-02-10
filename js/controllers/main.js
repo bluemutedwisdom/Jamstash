@@ -1,7 +1,6 @@
 ﻿JamStash.controller('AppCtrl',
 function AppCtrl($scope, $rootScope, $document, $location, utils, globals, model, notifications, $http, $state, $log) {
 
-    $rootScope.settings = globals.settings;
     $rootScope.song = [];
     $rootScope.queue = [];
     $rootScope.playingSong;

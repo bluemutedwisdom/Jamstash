@@ -20,16 +20,13 @@
 
 <link href="js/plugins/fancybox/jquery.fancybox.css" rel="stylesheet" type="text/css" />
 
-<script src="js/plugins/jquery-2.1.0.min.js" type="text/javascript"></script>
-<script src="js/plugins/jquery-ui-1.10.3.custom.min.js" type="text/javascript"></script>
-<script src="js/plugins/jquery-split-pane.js"></script>
+<script src="js/plugins/jquery-1.11.0.js" type="text/javascript"></script>
 
 <script src="js/plugins/angular/angular.min.js" type="text/javascript"></script>
 <script src="js/plugins/angular/angular-sanitize.min.js" type="text/javascript"></script>
 <script src="js/plugins/angular/angular-resource.min.js" type="text/javascript"></script>
 
 <script src="js/plugins/angular/angular-ui-router.js" type="text/javascript"></script>
-<script src="js/plugins/angular/angular-ui-scroll.js" type="text/javascript"></script>
 
 <script src="js/plugins/asyncStorage.max.js" type="text/javascript"></script>
 
@@ -72,7 +69,7 @@
 		</div>
 		<div id="nav">
 			<ul class="tabs">
-				<li><a class="first" title="Library" ui-sref="library" ui-sref-active="active"><img src="images/headphones_gd_16x14.png" /></a></li>
+				<li><a class="first" title="Library" ui-sref="library" ng-class="{'active': $state.includes('library')}"><img src="images/headphones_gd_16x14.png" /></a></li>
 				<li><a href="#/playlists" title="Playlists" ng-class="{'active': isActive('/playlists')}"><img src="images/list_gd_16x14.png" /></a></li>
 				<li><a href="#/podcasts" title="Podcasts" ng-class="{'active': isActive('/podcasts')}"><img src="images/rss_16x16.png" /></a></li>
 				<li><a href="#/archive" class="" title="Archive.org - Live Music Archive" ng-class="{'active': isActive('/archive')}"><img src="images/archive_gd_16x16.png" /></a></li>
@@ -87,7 +84,7 @@
 		<ol id="Queue" class="songlist noselect" sortable>
 			<li class="row song" ng-repeat="o in queue track by $index" ng-class="{'playing': o.playing, 'selected': o.selected}" ng-click="selectSong(o)" ng-dblclick="playSong(false, o)" id="{{o.id}}" parentid="{{o.parentid}}">
 			<div class="albumart">
-				<img ng-src="{{o.coverartthumb}}" src="images/albumdefault_60.jpg" />
+				<img ng-src="{{o.coverartfull}}" src="images/albumdefault_160.jpg" />
 			</div>
 			<div class="title" title="{{ o.track + ' - ' + o.name + ' - ' + o.time }}" ng-bind="o.name"></div>
 			<div class="albumtext" title="{{o.album}}" ng-bind="o.album"></div>

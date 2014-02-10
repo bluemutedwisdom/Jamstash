@@ -1,0 +1,114 @@
+#SubsonicIndex {
+	float: left;
+	height: 100%;
+	overflow-y: scroll;
+	width: 25%;
+}
+
+#AZIndex {
+	float: right;
+}
+
+#AZIndex a {
+	color: #7EA8D5;
+	display: block;
+	font-size: 24px;
+	padding: 5px 10px;
+	text-decoration: none;
+}
+
+#submenu_AZIndex {
+	background: none repeat scroll 0% 0% #F9F9F9;
+	border: 1px solid #C3C3C3;
+	display: none;
+	height: 100px;
+	position: fixed;
+	width: 200px;
+	z-index: 999;
+}
+
+#submenu_AZIndex a.close {
+	display: block;
+	font-size: 12px;
+	padding: 6px 16px;
+}
+
+#submenu_AZIndex li {
+	float: left;
+	height: 18px;
+	padding: 0px 2px 5px;
+}
+
+#submenu_AZIndex li a {
+	color: #4B95E5;
+	cursor: pointer;
+	font-size: 24px;
+	padding: 0px 5px 0px 0px;
+	text-decoration: none;
+}
+
+#submenu_AZIndex ul {
+	list-style-type: none;
+	margin: 0px;
+	padding: 0px 0px 0px 10px;
+}
+
+#AutoAlbumContainer .nextprev {
+	padding: 0px 4px;
+}
+
+#AutoAlbumContainer li.item {
+	padding: 6px 8px;
+}
+
+.AutoAlbumControls {
+	float: right;
+}
+
+select.folders {
+	margin: 5px;
+	width: 75%;
+}
+
+ul.artistIndexes
+{
+	padding: 0;
+	list-style-type: none;
+}
+
+ul.artistIndexes li h4
+{
+	margin: 0;
+	padding: 0 0 0 10px;;
+	border-bottom: 1px solid #222;
+	border-top: 1px solid #222;
+}
+
+ul.artistIndexes li ul.artistList {
+	padding: 0 0 0 20px;
+	overflow: hidden;
+	list-style-type: none;
+}
+
+ul.artistIndexes li ul.artistList li {
+	border-left: 1px solid #222;
+}
+
+ul.artistIndexes ul.artistList li a {
+	color: #222;
+	text-decoration: none;
+	display: block;
+	height: 100%;
+	padding: 5px;
+	width: 100%;
+}
+
+ul.artistIndexes ul.artistList li:hover {
+	background-color: #DEECFB;
+}
+
+#loadartists {
+	display: block;
+	margin: auto;
+	text-align: center;
+}

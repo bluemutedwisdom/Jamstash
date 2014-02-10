@@ -14,9 +14,10 @@
 <h3 ng-hide="!selectedArtist.album.length">Albums<span ng-hide="!selectedArtist"> &mdash; {{selectedArtist.name}}</span></h3>
 
 <ul class="albumlist" ng-hide="!selectedArtist.album.length" ng-class="SelectedAlbumDisplay.id">
-	<li class="album" ng-class="{playing: o.id == playingSong.albumId}" id="{{o.id}}" parentid="{{o.parent}}" ng-repeat="o in selectedArtist.album | orderBy: SelectedAlbumSort.id" ui-sref-active="selected" scroll-if="o.id == selectedAlbum.id">
+	
+	<li ng-repeat="o in selectedArtist.album | orderBy: SelectedAlbumSort.id" class="album" ng-class="{playing: o.id == playingSong.albumId}" id="{{o.id}}" parentid="{{o.parent}}" ui-sref-active="selected" scroll-if="o.id == selectedAlbum.id">
 	<a ui-sref=".album({albumId: o.id})" stop-event="click">
-		<img ng-src="{{o.coverartthumb}}" src="images/albumdefault_160.jpg">
+		<img ng-src="{{o.coverartthumb}}" src="images/albumdefault_160.jpg" err-src="images/albumdefault_160.jpg">
 	</a>
 	<span class="year" ng-bind="o.year"></span>
 	<div class="itemactions">
@@ -40,6 +41,7 @@
 	<div style="clear: both"></div>
 	</li>
 </ul>
+<div ng-show="albumWaiting">loading</div>
 
 <div ui-view="songs">
 

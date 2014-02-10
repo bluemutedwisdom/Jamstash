@@ -56,29 +56,31 @@
 
 			<!-- Artist -->
 			<div id="loadartists" ng-hide="index.length">
-				<button id="action_RefreshArtists" title="Refresh Artists" ng-click="refreshArtists()"><img class="pad" src="images/reload_9x11.png" /></button>
-			</div>
-			<ul class="simplelist" ng-repeat="o in index">
-				<li class="index" title="Scroll to Top" id="{{o.name}}" ng-click="scrollToTop()"><a>{{o.name}}</a></li>
-				<ul class="simplelist artistlist">
-					<li ng-repeat="a in o.artist" class="item" ui-sref-active="selected" ><a ui-sref="library.artist({artistId: a.id})" ng-bind="a.name"></a></li>
-				</ul>
-			</ul>
+			    <img src="images/ajax-loader.gif">
+		    </div>
+		    <ul class="artistIndexes">
+			    <li ng-repeat="o in index | limitTo: 1">
+			    <h4 id="{{o.name}}" class="index">{{o.name}}</h4>
+			    <ul class="artistList">
+				    <li ng-repeat="a in o.artist" class="item" ui-sref-active="selected" ><a ui-sref="library.artist({artistId: a.id})" ng-bind="a.name"></a></li>
+			    </ul>
+			    </li>
+		    </ul>
 
-		</div>
-		<div id="SubsonicResults">
+	    </div>
+	    <div id="SubsonicResults">
 
-			<!-- Albums -->
-			<div id="AlbumsList" ui-view="albums">
-			</div>
-		</div>
-	</div>
-	<div id="submenu_AZIndex" class="submenu shadow" style="display: none;">
-		<ul>
-			<li ng-repeat="o in index"><a href="" ng-click="scrollToIndexName(o.name)">{{o.name}}</a></li>
-			<li><a href="" class="close" ng-click="scrollToIndexName('AZIndex')">[Top]</a></li>
-			<li><a href="" class="close" ng-click="toggleAZ()">[Close]</a></li>
-		</ul>
-	</div>
-	<!--<songpreview class="songpreview"></songpreview>-->
+		    <!-- Albums -->
+		    <div id="AlbumsList" ui-view="albums" inf-scroll="loadMoreAlbums()">
+		    </div>
+	    </div>
+    </div>
+    <div id="submenu_AZIndex" class="submenu shadow" style="display: none;">
+	    <ul>
+		    <li ng-repeat="o in index"><a href="" ng-click="scrollToIndexName(o.name)">{{o.name}}</a></li>
+		    <li><a href="" class="close" ng-click="scrollToIndexName('AZIndex')">[Top]</a></li>
+		    <li><a href="" class="close" ng-click="toggleAZ()">[Close]</a></li>
+	    </ul>
+    </div>
+    <!--<songpreview class="songpreview"></songpreview>-->
 </div>

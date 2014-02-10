@@ -30,11 +30,15 @@ JamStash.config(
 					controller: function($scope, $log, $stateParams){
 
 						if(isNaN($stateParams.offset) || $stateParams.offset === '')
-							{
-								$log.debug('calculating offset')
-								$scope.calcOffset($stateParams.offset)
-								return
-							}
+						{
+							$log.debug('calculating offset')
+							return
+						}
+						else if (! isNaN(parseInt($stateParams.offset)))
+						{
+							$log.debug('numeric offset: ' + $stateParams.offset)
+							$scope.$parent.offset = parseInt($stateParams.offset)
+						}
 
 							$log.debug('loading recently added with offset: ' + $stateParams.offset)
 							$scope.getAlbumListBy('newest', $stateParams.offset);
@@ -55,11 +59,39 @@ JamStash.config(
 				}
 			}
 		})
+		.state('library.random', {
+			url: '/random',
+			views: {
+				'albums': {
+					templateUrl: 'js/partials/albums.html',
+					controller: function($scope, $log, $stateParams){
+
+							$log.debug('loading random albums: ' + $stateParams.offset)
+							$scope.getAlbumListBy('random', $stateParams.offset);
+
+					}
+				}
+			}
+		})
+		.state('library.random.album', {
+			url: '/:albumId',
+			views: {
+				'songs': {
+					templateUrl: 'js/partials/songs.html',
+					controller: function($scope, $stateParams, $log, Album){
+						$log.debug('loading recently added with album: ' + $stateParams.albumId)
+						$scope.getSongs($stateParams.albumId, '')
+					}
+				}
+			}
+		})
 		.state('library.artist',{
 			url: '/:artistId',
 			views: {
 				'albums': {
+					templateUrl: 'js/partials/albums.html',
 					controller: function($scope, $stateParams, $log){
+						$log.debug('Loading Artist')
 						$log.debug(angular.toJson($stateParams))
 						if($stateParams.artistId.length > 0)
 							$scope.getAlbums({id: $stateParams.artistId});
@@ -72,6 +104,7 @@ JamStash.config(
 			templateUrl: 'js/partials/songs.html',
 			views: {
 				'songs': {
+					templateUrl: 'js/partials/songs.html',
 					controller: function($scope, $stateParams, $log, Album){
 						$log.debug(angular.toJson($stateParams))
 						if($stateParams.albumId.length > 0)
@@ -128,6 +161,7 @@ JamStash.config(
 				$rootScope.$on('$stateChangeError', function(event, toState, toParams, fromState, fromParams, error){
 					$log.debug(error)
 				})
+
 				$rootScope.loggedIn = false;
 
 				if (globals.settings.Username != "" && globals.settings.Password != "" && globals.settings.Server != "" && ! $state.includes('archive') ) {

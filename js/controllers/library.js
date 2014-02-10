@@ -1,4 +1,4 @@
-﻿JamStash.controller('SubsonicCtrl', function SubsonicCtrl($scope, $rootScope, $stateParams, utils, globals, model, notifications, $http, $state, $log, Album, Folders, Playlists, Artist) {
+﻿JamStash.controller('SubsonicCtrl', function SubsonicCtrl($scope, $rootScope, $stateParams, utils, globals, model, notifications, $http, $state, $log, Album, Folders, Playlists, Artist, $window) {
 
 	/*
 	 * songlist songs
@@ -40,6 +40,46 @@
 
 	$scope.MusicFolders = [];
 	$scope.SelectedMusicFolder;
+
+	$scope.$on('$viewContentLoaded', function(event, toState, toParams, fromState, fromParams, error){
+		if($state.includes('library.recent')||$state.includes('library.random'))
+			{
+				$log.debug('Infinite Scroll Binding')
+				var element = $('#AlbumsList');
+				element.on('scroll mousedown wheel DOMMouseScroll mousewheel keyup', function(e) {
+					var raw = element[0]
+					if (raw.scrollTop + raw.offsetHeight >= raw.scrollHeight) {
+						$scope.loadMoreAlbums()
+					}
+				})
+			}
+	})
+
+	$scope.albumWaiting = true;
+	$scope.loadMoreAlbums = function () {
+		if($scope.albumWaiting == false)
+			{
+				$scope.albumWaiting = true;
+				$log.debug('loading more albums... (offset: '+ $scope.offset + ')')
+				$scope.offset +=  globals.settings.AutoAlbumSize
+				Album.list({"type": $scope.selectedAutoAlbum, "offset": $scope.offset, "size": globals.settings.AutoAlbumSize}, function(data){
+
+					$scope.offset += globals.settings.AutoAlbumSize;
+					if (typeof data["subsonic-response"].albumList2.album != 'undefined') {
+
+						angular.forEach(data['subsonic-response'].albumList2.album, function (item, key) {
+							$scope.selectedArtist.album.push ( $scope.mapAlbum(item) )
+						})
+
+					} else {
+						notifications.updateMessage('No Albums Returned :(', true);
+					}
+
+					$log.debug('Albums finished loading, albumWaiting = false')
+					$scope.albumWaiting = false;
+				});
+			}
+	}
 
 	$scope.getMusicFolders = function () {
 
@@ -167,7 +207,7 @@
 			artistId: album.artistId,
 			coverartthumb: coverartthumb,
 			coverartfull: coverartfull,
-			date: $.format.date(new Date(album.created), "yyyy-MM-dd h:mm a"),
+			date: $.format.date(new Date(album.created), "yyyy-MM-dd"),
 			starred: starred,
 			year: album.year,
 			description: '',
@@ -208,20 +248,20 @@
 			var tempAlbums = [];
 
 			if(data['subsonic-response'].artist.album.length > 0)
-			{
-				angular.forEach(data['subsonic-response'].artist.album, function (item, key) {
-					$log.debug(JSON.stringify(item, null, 2))
-					tempAlbums.push ( $scope.mapAlbum(item) )
-				})
-			}
-			else
-			{
-				$log.debug(JSON.stringify(data['subsonic-response'].artist.album))
-				tempAlbums[0] = $scope.mapAlbum(data['subsonic-response'].artist.album)
-			}
+				{
+					angular.forEach(data['subsonic-response'].artist.album, function (item, key) {
+						$log.debug(JSON.stringify(item, null, 2))
+						tempAlbums.push ( $scope.mapAlbum(item) )
+					})
+				}
+				else
+					{
+						$log.debug(JSON.stringify(data['subsonic-response'].artist.album))
+						tempAlbums[0] = $scope.mapAlbum(data['subsonic-response'].artist.album)
+					}
 
 
-			$scope.selectedArtist.album = tempAlbums;
+					$scope.selectedArtist.album = tempAlbums;
 		})
 	};
 
@@ -230,26 +270,32 @@
 	 */
 	$scope.getAlbumListBy = function (type, offset) {
 
+		$scope.albumWaiting = true;
+
 		Album.list({"type": type, "offset": offset, "size": globals.settings.AutoAlbumSize}, function(data){
 
 			if (typeof data["subsonic-response"].albumList2.album != 'undefined') {
 
-				$scope.selectedAutoAlbum = type;
-				$scope.selectedArtist = {}
-				$scope.selectedArtist.name = type;
-				$scope.selectedArtist.album = data['subsonic-response'].albumList2.album
+				if($scope.selectedAutoAlbum == null || type != $scope.selectedAutoAlbum)
+					{
+						$scope.selectedArtist = {album: []};
+					}
 
-				var tempAlbums = [];
-				angular.forEach(data['subsonic-response'].albumList2.album, function (item, key) {
-					tempAlbums.push ( $scope.mapAlbum(item) )
-				})
+					$scope.selectedAutoAlbum = type;
+					$scope.selectedArtist.name = type;
 
-				$scope.selectedArtist.album = tempAlbums;
+					angular.forEach(data['subsonic-response'].albumList2.album, function (item, key) {
+						$scope.selectedArtist.album.push ( $scope.mapAlbum(item) )
+					})
 
 			} else {
 				notifications.updateMessage('No Albums Returned :(', true);
 			}
+
+			$log.debug('Albums finished loading, albumWaiting = false')
+			$scope.albumWaiting = false;
 		});
+
 	};
 
 	$scope.getSongs = function (id, action) {
@@ -276,9 +322,7 @@
 					$rootScope.queue.push(utils.mapSong(item));
 				});
 
-				var next = $rootScope.queue[0];
-
-				$rootScope.playSong(false, next);
+				$rootScope.playSong(false, $rootScope.queue[0]);
 
 				notifications.updateMessage(items.length + ' Song(s) Added to Queue', true);
 
@@ -495,30 +539,30 @@ $rootScope.Genres = items;
 	$scope.calcOffset = function( offset ){
 
 		if (offset == 'next')
-		{
-			$log.debug('increment offset')
-			$scope.offset += globals.settings.AutoAlbumSize
-		}
-		else if (offset == 'prev')
-		{
-			$log.debug('decrement offset')
-			$scope.offset -= globals.settings.AutoAlbumSize
-			if($scope.offset < 0)
-				$scope.offset = 0;
-		}
-		else if (!isNaN(offset) && offset > 0 && offset != '')
-		{
-			$log.debug('numeric offset: ' + offset)
-			$scope.offset = offset
-		}
-		else
-		{
-			$log.debug('reset offset to 0')
-			$scope.offset = 0
-		}
+			{
+				$log.debug('increment offset')
+				$scope.offset += globals.settings.AutoAlbumSize
+			}
+			else if (offset == 'prev')
+				{
+					$log.debug('decrement offset')
+					$scope.offset -= globals.settings.AutoAlbumSize
+					if($scope.offset < 0)
+						$scope.offset = 0;
+				}
+				else if (!isNaN(offset) && offset > 0 && offset != '')
+					{
+						$log.debug('numeric offset: ' + offset)
+						$scope.offset = offset
+					}
+					else
+						{
+							$log.debug('reset offset to 0')
+							$scope.offset = 0
+						}
 
-		$log.debug('reloading state ' + $state.current.name + ' with offset: ' + $scope.offset)
-		$state.go($state.current.name, {offset: $scope.offset})
+						$log.debug('reloading state ' + $state.current.name + ' with offset: ' + $scope.offset)
+						$state.go($state.current.name, {offset: $scope.offset})
 	}
 
 
@@ -529,12 +573,12 @@ $rootScope.Genres = items;
 
 	utils.getValue("Indexes", function(i){
 		if(i)
-		{
-			$log.debug('index loaded from async')
-			$rootScope.index = i;
-		}
-		else
-			$log.debug('no saved artist index')
+			{
+				$log.debug('index loaded from async')
+				$rootScope.index = i;
+			}
+			else
+				$log.debug('no saved artist index')
 	})
 
 	$scope.getMusicFolders();

@@ -94,7 +94,7 @@ JamStash.service('globals', function () {
 		{ id: "artist", name: "Artist" },
 		{ id: "title", name: "Album" },
 		{ id: "year", name: "Year" },
-		{ id: "created", name: "Date Added" }
+		{ id: "-date", name: "Date Added" }
 	];
 	this.settings = {
 		Url: "http://Jamstash.com/beta/#/archive/",
@@ -162,15 +162,14 @@ JamStash.directive('fancybox', function ($log) {
 	return {
 		restrict: 'A',
 		scope: {
-			fancybox: "@"
+			fancybox: "@href"
 		},
 		link: function(scope, element, attrs) {
 
-			element.attr('rel', 'covers');
-
 			scope.$watch(function() { return scope.fancybox; }, function(newval) {
 
-				$(element).children().fancybox({
+				$(element).fancybox({
+					type: 'image',
 					onStart: function(items, index, options) {
 
 						var arrowStyle = {
@@ -185,13 +184,7 @@ JamStash.directive('fancybox', function ($log) {
 							speedOut: 150
 						});
 
-						// image
-						options.type = 'image';
-
 						return options;
-					},
-					afterClose: function() {
-						$(element).children().show();
 					}
 				})
 			}, true)
@@ -327,3 +320,13 @@ JamStash.service('notifications', function ($rootScope, globals) {
 		}
 	}
 });
+
+JamStash.directive('errSrc', function() {
+	return {
+		link: function(scope, element, attrs) {
+			element.bind('error', function() {
+				element.attr('src', attrs.errSrc)
+			})
+		}
+	}
+})

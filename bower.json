@@ -1,0 +1,40 @@
+{
+  "name": "Jamstash",
+  "version": "0.2.0",
+  "homepage": "https://github.com/ezpuzz/Jamstash",
+  "authors": [
+    "Emory P. <emory.petermann@axis80.com>"
+  ],
+  "description": "Subsonic Music Server HTML5 Frontend",
+  "main": "index.html",
+  "keywords": [
+    "Music",
+    "Streaming",
+    "HTML5",
+    "Subsonic",
+    "Client",
+    "Frontend"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-mousewheel": "~1.0.4",
+    "jquery": "~1",
+    "db": "WebReflection/db",
+    "angular": "~1.2.12",
+    "jplayer": "~2.5.4",
+    "angular-resource": "~1.2.12",
+    "angular-ui-router": "0.2.8-bowratic-tedium",
+    "fancybox": "~2.1.5",
+    "jquery.base64.js": "yckart/jquery.base64.js#~0.0.2",
+    "jquery-dateFormat": "phstc/jquery-dateFormat#~1.0.0",
+    "jquery.scrollTo": "~1.4.11"
+  }
+}

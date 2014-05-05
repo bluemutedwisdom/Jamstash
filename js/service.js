@@ -79,7 +79,7 @@
 	}
 });
 
-JamStash.service('globals', function () {
+JamStash.service('globals', function ($rootScope) {
 	this.SearchTypes = [
 		{ id: "song", name: "Song" },
 		{ id: "album", name: "Album" },
@@ -96,6 +96,7 @@ JamStash.service('globals', function () {
 		{ id: "year", name: "Year" },
 		{ id: "-date", name: "Date Added" }
 	];
+
 	this.settings = {
 		Url: "http://Jamstash.com/beta/#/archive/",
 		Username: "admin",
@@ -129,11 +130,13 @@ JamStash.service('globals', function () {
 	this.SavedCollections = [];
 	this.SavedGenres = [];
 
-	this.BaseURL = function () { return this.settings.Server + '/rest'; };
+	this.BaseURL = function () { return $rootScope.settings.Server + '/rest'; };
 
-	this.BaseParams = function () { return 'u=' + this.settings.Username + '&p=' + this.settings.Password + '&f=' + this.settings.Protocol + '&v=' + this.settings.ApiVersion + '&c=' + this.settings.ApplicationName + "&callback=" + "JSON_CALLBACK"; };
+	this.BaseParams = function () { return 'u=' + $rootScope.settings.Username + '&p=' + $rootScope.settings.Password + '&f=' + $rootScope.settings.Protocol + '&v=' + $rootScope.settings.ApiVersion + '&c=' + $rootScope.settings.ApplicationName + "&callback=JSON_CALLBACK"; };
 
-	this.defaultParams = function () { return {"u" : this.settings.Username, "p" : this.settings.Password, "f" : this.settings.Protocol, "v" : this.settings.ApiVersion, "c" : this.settings.ApplicationName, "callback" : "JSON_CALLBACK"}}
+	this.defaultParams = function () { return {"u" : $rootScope.settings.Username, "p" : $rootScope.settings.Password, "f" : $rootScope.settings.Protocol, "v" : $rootScope.settings.ApiVersion, "c" : $rootScope.settings.ApplicationName, "callback" : "JSON_CALLBACK"}}
+
+
 });
 
 JamStash.directive('scrollIf', function(){

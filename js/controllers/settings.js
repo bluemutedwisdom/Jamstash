@@ -27,33 +27,33 @@
 	});
 
 	$scope.save = function () {
-		if ($scope.globals.settings.Password != '' && globals.settings.Password.substring(0, 4) != 'enc:') { $scope.globals.settings.Password = 'enc:' + utils.HexEncode($scope.globals.settings.Password); }
+		if ($scope.settings.Password != '' && $scope.settings.Password.substring(0, 4) != 'enc:') { $scope.settings.Password = 'enc:' + utils.HexEncode($scope.settings.Password); }
 
-		if ($scope.globals.settings.NotificationSong) {
+		if ($scope.settings.NotificationSong) {
 			notifications.requestPermissionIfRequired();
 			if (!notifications.hasNotificationPermission()) {
 				alert('HTML5 Notifications are not available for your current browser, Sorry :(');
 			}
 		}
 
-		if ($scope.globals.settings.NotificationNowPlaying) {
+		if ($scope.settings.NotificationNowPlaying) {
 			notifications.requestPermissionIfRequired();
 			if (!notifications.hasNotificationPermission()) {
 				alert('HTML5 Notifications are not available for your current browser, Sorry :(');
 			}
 		}
 
-		if ($scope.globals.settings.Theme) {
-			utils.switchTheme($scope.globals.settings.Theme);
+		if ($scope.settings.Theme) {
+			utils.switchTheme($scope.settings.Theme);
 		}
 
-		$log.debug('Settings Updated to: ' + JSON.stringify($scope.globals.settings, null, 2))
+		$log.debug('Settings Updated to: ' + JSON.stringify($scope.settings, null, 2))
 
-		utils.setValue('Settings', $scope.globals.settings)
+		utils.setValue('Settings', $scope.settings)
 
 		notifications.updateMessage('Settings Updated!', true);
 
-		if (globals.settings.Server != '' && globals.settings.Username != '' && globals.settings.Password != '') {
+		if ($scope.settings.Server != '' && $scope.settings.Username != '' && $scope.settings.Password != '') {
 			$scope.ping();
 		}
 	};

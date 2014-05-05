@@ -59,7 +59,7 @@
 			    <img src="images/ajax-loader.gif">
 		    </div>
 		    <ul class="artistIndexes">
-			    <li ng-repeat="o in index | limitTo: 1">
+			    <li ng-repeat="o in index">
 			    <h4 id="{{o.name}}" class="index">{{o.name}}</h4>
 			    <ul class="artistList">
 				    <li ng-repeat="a in o.artist" class="item" ui-sref-active="selected" ><a ui-sref="library.artist({artistId: a.id})" ng-bind="a.name"></a></li>

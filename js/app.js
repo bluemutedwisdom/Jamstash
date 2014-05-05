@@ -134,14 +134,19 @@ JamStash.config(
 
 				try
 				{
+				    	// set to reasonable defaults and when
+					// asyncstorage callback returns update to saved values
+				    	$rootScope.settings = globals.settings;
+
 					utils.getValue('Settings', function(s){
-						if(s != null)
-							{
-								$log.debug('Loading Saved Settings')
-								$log.debug(s)
-								globals.settings = s;
-							}
+					    if(s != null)
+					    {
+						$log.debug('Loading Saved Settings');
+						$log.debug(s);
+						$rootScope.settings = s;
+					    }
 					})
+
 
 					utils.getValue('Volume', function(v){
 						if(v != null)
